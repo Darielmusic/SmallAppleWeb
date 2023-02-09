@@ -15,11 +15,11 @@
   --span-color: #a0a0a0;
   --heading1Color: #727272;
   --normalTextColor: #484848;
-  --scrollBarColor: #00853f;
+  --scrollBarColor: #4f92b8;
   --primaryColor: #4f92b8;
-  --hoverNavColor: #00853f;
-  --background-sidedbar: #007b3c;
-  --green-zaglul: #00853f;
+  --hoverNavColor: #4f92b8;
+  --background-sidedbar:#4f92b8;
+  --green-zaglul: #4f92b8;
 
   /* buttons */
   --main-bgr-button: #d7d7d7;
@@ -28,14 +28,14 @@
   --danger-bkg-button: #cf2f29;
   --primary-bkg-button: #2993cf;
   --info-bkg-button: #7cc5ef;
-  --success-bkg-button: #00853f;
+  --success-bkg-button: #4f92b8;
   --warning-bkg-button: #b7b33a;
 
   --danger-bkg-button-active: #96110c;
   --primary-bkg-button-active: #0a6da7;
   --info-bkg-button-active: #206e9b;
   --secondary-bkg-button-active: #939393;
-  --success-bkg-button-active: #00853f;
+  --success-bkg-button-active: #4f92b8;
   --warning-bkg-button-active: #8e8a14;
 
   --warning-card: #ffdb9b;
@@ -43,7 +43,7 @@
   --danger-card: #ffe0e3;
   --danger-card-bold: #ff4858;
   --success-card: #c3f3d7;
-  --success-card-bold: #24ad5d;
+  --success-card-bold: #4f92b8;
   --info-card: #d7f0ff;
   --info-card-bold: #3fb6ff;
   --second-card: #d7f0ff;
@@ -53,10 +53,10 @@
   --background-sdb: #c5ffc9;
 
   --secondaryColorBlur: #ebab6b;
-  --titlePrimaryColor: #007b3c;
+  --titlePrimaryColor: #4f92b8;
 
   --max-width-filter: 1400px;
-  --primaryColor-filter: #2b7c2b;
+  --primaryColor-filter:#4f92b8;
   --secondaryColor-filter: #fe8340;
   --disabledColor-filter: #ccc;
 }
