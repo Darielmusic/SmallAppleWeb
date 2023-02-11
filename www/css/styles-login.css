@@ -4,11 +4,14 @@
     box-sizing: border-box;
 }
 
+body{
+    background: linear-gradient(160deg, #0072f4 0%, #fbfbfb 100%);;
+}
 
 /*  conteneder del login */
 
 .container{
-    background-color: #e7ddc1;
+    background-color: #ffffff;
     width: 400px;
     height: 400px;
     border-radius: 4px;
@@ -19,13 +22,32 @@
     top: 250PX;
 }
 
+.container .logo-content{
+    display: flex;
+    justify-content: center;
+    height: 88px;
+    width: 344px;
+    margin-bottom: 15px;
+}
+
+.container .logo-content div{
+    width: 100px;
+    border-radius: 50%;
+    background-color: rgb(40 104 176 / 31%);
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /*img login*/
-.container img{
+.container .logo-content div img{
     height: 80px;
     width: 80px;
     border-radius: 50%;
     display: flex;
     margin: 0 auto;
+    object-fit: cover;
 }
 
 /*lbl inicio secion*/
@@ -47,26 +69,27 @@
     border: 1px solid rgb(141, 141, 141);
     margin-bottom: 15px;
     padding: 11px 10px;
-    border-radius: 6px;
-    box-shadow: 1px 1px #888888;
+    border-radius: 4px;
+    box-shadow: 0px 1px #888883;
 }
 
 .control:hover{
-    border: 1px solid rgb(0, 211, 248);
+    /* border: 1px solid rgb(0, 211, 248); */
     /* box-shadow: 0px 0px 1px rgb(176 195 199); */
 }
 
 /* btn inicio secion*/
 
 .btninicio{
-    background-color: rgb(4, 167, 196);
+    background-color: rgb(40 104 176);
     padding: 10px 100px;
-    border-radius: 5px;
+    border-radius: 4px;
     text-align: center;
     width: 100%;
     margin-bottom: 10px;
     margin-top: 15px;
     border: 1px solid #000;
+    cursor: pointer;
 }
 
 .btninicio a{
@@ -78,11 +101,11 @@
 
 .container h4 a{
     text-decoration: none;
-    color: rgb(2, 201, 201);
+    color: rgb(109 136 195);
 }
 
 .container a:hover{
-    color: rgb(0, 175, 175);
+    /* color: rgb(0, 175, 175); */
 }
 .container h4{
     margin: 0;
@@ -98,8 +121,7 @@
  
 
 .btninicio:hover,.btncrear:hover{
-    background-color:rgb(0, 93, 109) ;
-    
+    background-color: rgb(56 115 200);
 }
 
 /* fin del contenedor login*/
@@ -132,7 +154,7 @@ position: absolute;
     text-align: center;
     font-size: 1.5em;
     margin-bottom: 5px;
-    background: rgba(231, 221, 193,.6);
+    background: rgb(255 255 255);
     padding: 20px;
     width: 100%;
     border-radius: 4px;
@@ -144,7 +166,7 @@ position: absolute;
     padding: 20px;
     font-size: 4em;
     text-align: center;
-    background: rgba(231, 221, 193,.6);
+    background: rgb(255 255 255);
     border-radius: 4px;
 }
 
@@ -162,11 +184,10 @@ position: absolute;
 
 /*container imagenes */
 .containerimg{
-    box-shadow: 1px 1px 100px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 0px 15px rgb(0 0 0 / 50%);
     width: 60%;
     height: 940PX;
-    float: right; 
-
+    float: right;
 }
 
 
