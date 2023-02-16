@@ -181,10 +181,10 @@ body div.container {
   justify-content: center;
 }
 
-.sideBarHeader {
+/* .sideBarHeader {
   position: fixed;
   
-}
+} */
 
 .sidebar .logoSideBar {
   text-align: center;
@@ -3624,9 +3624,9 @@ b {
   gap: 15px;
 }
 
-.button-grouper{
+/* .button-grouper{
   width: 50px;
-}
+} */
 
 
 .rightDos{
