@@ -17,8 +17,10 @@
   <div class="container">
     <div class="container-custom">
 
+
+
       <div class="sidebarContainer">
-        <nav class="sidebar" id="sidebarMenu">
+        <nav class="sidebar" id="menuLateral">
           <div class="sideBarHeader">
             <div class="text-logo">
               <div class="logoSideBar">
@@ -38,16 +40,16 @@
                     <a href="creacion-productos.html"><i class="fa-solid fa-box"></i>Productos</a>
                   </li>
                   <li>
-                    <a href="creacion-usuarios.html"><i class="fa-solid fa-cart-flatbed"></i>Pedidos</a>
+                    <a href="#"><i class="fa-solid fa-cart-flatbed"></i>Pedidos</a>
                   </li>
                   <li>
-                    <a href="creacion-usuarios.html"><i class="fa-solid fa-computer"></i>Monitoreo de pedido</a>
+                    <a href="#"><i class="fa-solid fa-computer"></i>Monitoreo de pedido</a>
                   </li>
                   <li>
-                    <a href="creacion-usuarios.html"><i class="fa-brands fa-watchman-monitoring"></i>Productos en existencia</a>
+                    <a href="#"><i class="fa-brands fa-watchman-monitoring"></i>Productos en existencia</a>
                   </li>
                   <li>
-                    <a href="creacion-usuarios.html"><i class="fa-solid fa-clock-rotate-left"></i>Historial</a>
+                    <a href="#"><i class="fa-solid fa-clock-rotate-left"></i>Historial</a>
                   </li>            
                 </ul>
               </div>
@@ -58,12 +60,12 @@
 
       <section class="section-form">
         <header>
-          <div class="header-menu-container" id="menuConteiner">
+          <div class="header-menu-container" id="menuContenedor">
             <div class="content-opcion">
               <i class="fa-regular fa-sun"></i>
               <div class="cerrar-section">Configuracion</div>
             </div>
-            <div class="content-opcion" id="logout">
+            <div class="content-opcion" id="logoPerfil">
               <i class="fa-solid fa-right-to-bracket"></i>
               <div class="cerrar-section">Cerrar sesion</div>
             </div>
@@ -71,7 +73,7 @@
 
 
           <div class="header-container-top">
-            <div class="user-header" id="userHeader">
+            <div class="user-header" id="headerUsuario">
               <div class="user-info-content">
                 <div id="nameUserHeader"></div>
                 <div id="secondNameUserHeader"></div>
@@ -88,86 +90,83 @@
                 <hr class="custom-hr">
                 <div class="header-container">
                     <div class="form-header">
-                        <h1><i class="fa-solid fa-users"></i> &nbsp Mantenimiento de usuarios</h1>
-                        <span>Este apartado es para la administracion de los usuarios</span>
+                        <h1><i class="fa-solid fa-box"></i> &nbsp Creacion de Producto</h1>
+                        <span>Este apartado es para la creacion del producto</span>
                     </div>
                 </div>
                 <div class="section-content">
-                    <div class="section-container" id="formContainer">
+                    <div class="section-container" id="contenedorMenuPrincipal">
                         <form autocomplete="off" class="inputs-container">
         
                             <div class="left">
                                 <div class="photo-container">
-                                    <div class="img-user" id="imgContainer">
-                                        <img src="/src/user.jpg" id="imgUser">
-                                        <input accept="image/*" type="file" id="imgUserInput">
+                                    <div class="img-user" id="contenedorImg">
+                                      
+                            
+                                      <img src="/src/productos.jpg" alt="">
+                                        <input accept="image/*" type="file" id="imgUsuarioInput">
                                         
                                     </div>
                                 </div>
-                                <div class="form-inputs mt-10">
-                                    <label for="txtNumero">Codigo de usuario</label>
-                                    <input autocomplete="off" disabled type="text" value="Nuevo" class="" id="txtNumero">
-                                </div>
+                                <div class="form-inputs mt-10Dos">
+                                  <label for="txtaddress">Descripcion</label>
+                                  <textarea name="" id="txtDescripcion" cols="30" rows="5"></textarea>
+                                  </div> 
+
                                 <!-- <div class="form-inputs ">
                                     <label for="slSucursales">Sucursales</label>
                                     <select autocomplete="off" class="requerid" tabindex="7" id="slSucursales">
                                         <option value=""></option>
                                     </select>
                                 </div> -->
+
                                 <div class="form-inputs">
-                                    <label for="slTipoUsuario">Tipo de Usuario</label>
-                                    <select autocomplete="off" class="requerid" tabindex="8" id="slTipoUsuario">
+                                    <label for="slTipoUsuario">Estatus</label>
+                                    <select autocomplete="off" class="requerid" tabindex="8" id="txtEstatus">
                                         <option value=""></option>
-                                        <option value="">Admin</option>
-                                        <option value="">Corriente</option>
-                                    </select>
+                                    </select> 
                                 </div>
                                 <div class="form-inputs">
-                                    <label for="slStatus">Estatus</label>
+                                    <!--<label for="slStatus">Estatus</label>
                                     <select autocomplete="off" class="requerid" tabindex="9" id="slStatus">
                                         <option value=""></option>
-                                    </select>
+                                    </select> -->
                                 </div>
                             </div>
+                          
                             <div class="center">
                                 <div class="form-inputs">
-                                    <label for="txtName">Nombre</label>
-                                    <input autocomplete="off" type="text" tabindex="1" class="requerid" id="txtName">
+                                   </div>
+                                <div class="form-inputs">
+                                    <label for="txtCedula">ID</label>
+                                    <input autocomplete="off" type="number" tabindex="3" class="requerid" id="txtId">
                                 </div>
                                 <div class="form-inputs">
-                                    <label for="txtCedula">Cedula</label>
-                                    <input autocomplete="off" type="text" tabindex="3" class="requerid" id="txtCedula">
-                                </div>
-                                <div class="form-inputs">
-                                    <label for="txtUser">Usuario</label>
-                                    <input autocomplete="off" type="text" tabindex="5" class="requerid" id="txtUser">
+                                    <label for="txtUser">Articulo</label>
+                                    <input autocomplete="off" type="text" tabindex="5" class="requerid" id="txtArticulo">
                                 </div>
                                 <div class="form-inputs eye-content">
-                                    <label for="txtPassword">Contraseña</label>
-                                    <i class="fa-regular fa-eye-slash"></i>
-                                    <input autocomplete="off" type="password" tabindex="10" id="txtPassword">
-                                </div>
+                                   <label for="slStatus">Categoria</label>
+                                    <select autocomplete="off" class="requerid" tabindex="9" id="txtCategoria">
+                                        <option value=""></option>
+                                    </select> 
+                                  </div>
                             </div>
         
-                            <div class="right">
+                            <div class="rightDos">
         
                                 <div class="form-inputs">
-                                    <label for="txtLastname">Apellido</label>
-                                    <input autocomplete="off" type="text" tabindex="2" id="txtLastname">
+                                    <label for="txtLastname">Codigo de barra</label>
+                                    <input autocomplete="off" type="text" tabindex="2" id="txtCodigo">
                                 </div>
+                                
                                 <div class="form-inputs">
-                                    <label for="txtaddress">Direccion</label>
-                                    <input autocomplete="off" type="text" tabindex="4" id="txtaddress">
-                                </div>
-                                <div class="form-inputs">
-                                    <label for="txtEmail">E-mail</label>
-                                    <input autocomplete="off" type="text" tabindex="6" id="txtEmail">
-                                </div>
-                                <div class="form-inputs eye-content">
-                                    <label for="txtConfirmPassword">Confirmar contraseña</label>
-                                    <i class="fa-regular fa-eye-slash"></i>
-                                    <input autocomplete="off" type="password" tabindex="11" id="txtConfirmPassword">
-                                </div>
+                                  <label for="txtLastname">Precio</label>
+                                  <input autocomplete="off" type="number" tabindex="2" id="txtPrecio">
+                            
+                                   </div>
+                                
+                                
                             </div>
         
                         </form>
@@ -177,19 +176,19 @@
                         <div class="button-container">
                             <div class="button-grouper tooltip">
                                 <span class="tooltip-box ">Limpiar</span>
-                                <button id="btnClearAll" title="Nuevo" class="hbtn-custom-primary">
+                                <button id="btnBorrar" title="Nuevo" class="hbtn-custom-primary">
                                     <i class="fa-solid fa-file fa-2x"></i>
                                 </button>
                             </div>
                             <div class="button-grouper tooltip">
                                 <span class="tooltip-box">Buscar los usuarios</span>
-                                <button id="btnSearchUser" class="btn-custom-info">
+                                <button id="btnBuscar" class="btn-custom-info">
                                     <i class="fa-solid fa-magnifying-glass fa-2x"></i>
                                 </button>
                             </div>
                             <div class="button-grouper tooltip">
                                 <span class="tooltip-box">Guardar usuarios</span>
-                                <button id="btnSaveUser" tabindex="12" title="Guardar" class="btn-custom-success">
+                                <button id="btnGuardar" tabindex="12" title="Guardar" class="btn-custom-success">
                                     <i class="fa-regular fa-floppy-disk fa-2x"></i>
                                 </button>
                             </div>                       
