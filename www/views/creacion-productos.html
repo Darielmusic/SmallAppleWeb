@@ -109,10 +109,16 @@
                                         
                                     </div>
                                 </div>
-                                <div class="form-inputs mt-10Dos">
-                                  <label for="txtaddress">Descripcion</label>
-                                  <textarea name="" id="txtDescripcion" cols="30" rows="5"></textarea>
-                                  </div> 
+                            
+                                <div class="form-inputs">
+                                  <label for="slTipoUsuario">Estatus</label>
+                                  <select autocomplete="off" class="requerid" tabindex="8" id="txtEstatus">
+                                      <option value=""></option>
+                                      <option value="">Activo</option>
+                                      <option value="">Inactivo</option>
+                                  </select> 
+                                </div>
+                            
 
                                 <!-- <div class="form-inputs ">
                                     <label for="slSucursales">Sucursales</label>
@@ -120,26 +126,11 @@
                                         <option value=""></option>
                                     </select>
                                 </div> -->
-
-                                <div class="form-inputs">
-                                    <label for="slTipoUsuario">Estatus</label>
-                                    <select autocomplete="off" class="requerid" tabindex="8" id="txtEstatus">
-                                        <option value=""></option>
-                                        <option value="">Activo</option>
-                                        <option value="">Inactivo</option>
-                                    </select> 
-                                </div>
-                                <div class="form-inputs">
-                                    <!--<label for="slStatus">Estatus</label>
-                                    <select autocomplete="off" class="requerid" tabindex="9" id="slStatus">
-                                        <option value=""></option>
-                                    </select> -->
-                                </div>
                             </div>
                           
                             <div class="center">
-                                <div class="form-inputs">
-                                   </div>
+                                 <div class="form-inputs">
+                              </div>
                                 <div class="form-inputs">
                                     <label for="txtCedula">ID</label>
                                     <input autocomplete="off" type="number" tabindex="3" class="requerid" id="txtId">
@@ -148,32 +139,38 @@
                                     <label for="txtUser">Articulo</label>
                                     <input autocomplete="off" type="text" tabindex="5" class="requerid" id="txtArticulo">
                                 </div>
-                                <div class="form-inputs eye-content">
-                                   <label for="slStatus">Categoria</label>
-                                    <select autocomplete="off" class="requerid" tabindex="9" id="txtCategoria">
-                                        <option value=""></option>
-                                        <option value="">Vegetales</option>
-                                        <option value="">Carnes</option>
-                                        <option value="">Embutidos</option>
-                                        <option value="">Granos</option>
-                                    </select> 
-                                  </div>
-                            </div>
-        
-                            <div class="rightDos">
-        
                                 <div class="form-inputs">
-                                    <label for="txtLastname">Codigo de barra</label>
-                                    <input autocomplete="off" type="text" tabindex="2" id="txtCodigo">
+                                  <label for="txtLastname">Codigo de barra</label>
+                                  <input autocomplete="off" type="text" tabindex="2" id="txtCodigo">
                                 </div>
-                                
-                                <div class="form-inputs">
-                                  <label for="txtLastname">Precio</label>
-                                  <input autocomplete="off" type="number" tabindex="2" id="txtPrecio">
-                            
-                                   </div>
+                              </div>
+                            <div class="right">
+                              <div class="form-inputs">
+                              </div>
+                              <div class="form-inputs">
+                                <label for="txtLastname">Precio</label>
+                                <input autocomplete="off" type="number" tabindex="2" id="txtPrecio" >
+                              </div>
+                              <div class="form-inputs">
+                                <label for="slStatus">Categoria</label>
+                                 <select autocomplete="off" class="requerid" tabindex="9" id="txtCategoria">
+                                     <option value=""></option>
+                                     <option value="">Vegetales</option>
+                                     <option value="">Carnes</option>
+                                     <option value="">Embutidos</option>
+                                     <option value="">Granos</option>
+                                 </select> 
+                               </div>
+                               <div class="form-inputs">
+                                 <label for="txtLastname">Precio</label>
+                                 <input autocomplete="off" type="number" tabindex="2" id="txtPrecio">
+                               </div>
                             </div>
                         </form>
+                        <div class="Content-descrition">
+                          <label for="txtaddress">Descripcion</label>
+                          <textarea name="" id="txtDescripcion" cols="30" rows="5"></textarea>
+                        </div> 
                     </div>
                     <!-- Seccion de los botones -->
                     <section class="button-section">

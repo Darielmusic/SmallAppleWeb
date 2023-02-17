@@ -111,7 +111,7 @@ hr.custom-hr {
 .form-container .photo-container {
   display: flex;
   justify-content: center;
-  height: 150px;
+  height: 180px;
   width: 100%;
 }
 
@@ -1151,6 +1151,28 @@ input[type=date] {
   flex-direction: column;
   width: 100%;
   padding: 10px 20px;
+}
+
+.Content-descrition{
+  display: flex;
+  flex-direction: column;
+  padding: 10px 24px;
+  gap: 4px;
+}
+
+.Content-descrition label{
+  font-weight: 300;
+  margin: 0 0 4px 0;
+  font-size: 18px;
+}
+
+.Content-descrition textarea{
+  height: 170px;
+  font-size: 18px;
+  padding: 15px;
+  border-radius: 0 4px 4px 0;
+  font-weight: 300;
+  border: solid 1px var(--border-inputs);
 }
 
 .inputs-container .form-inputs label {
