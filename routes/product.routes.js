@@ -6,5 +6,6 @@ let baseURL = '/api/product/';
 
 router.get(`${baseURL}`,controller.getProduct)
 router.get(`${baseURL}:id`, controller.getById);
+router.post(`${baseURL}`, controller.postProduct);
 
 module.exports = router
