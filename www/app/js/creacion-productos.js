@@ -7,6 +7,12 @@
     let txtCategoria = document.getElementById("txtCategoria");
     let txtDescripcion = document.getElementById("txtDescripcion");
     let txtEstatus = document.getElementById("txtEstatus");
+    let btnBuscar = document.getElementById("btnBuscar");
+
+
+
+
+    
 
 
     //botones
@@ -14,6 +20,21 @@
 
     //
     let objeto = {}
+
+    //Modal
+
+    let modalContainer = document.getElementById("modalContainer");
+
+    var showModal = () => {
+        modalContainer.style.opacity = 1;
+        modalContainer.style.pointerEvents = "unset";
+    };
+
+    var hideModal = () => {
+        modalContainer.style.opacity = 0;
+        modalContainer.style.pointerEvents = "none";
+    };
+    closeModalAction.addEventListener("click", hideModal);
 
     btnGuardar.addEventListener("click", function () {
 
@@ -61,6 +82,11 @@
             txtId.focus();
 
         }
+    })
+
+    btnBuscar.addEventListener("click",function(){
+
+        showModal();
     })
 
 })()
