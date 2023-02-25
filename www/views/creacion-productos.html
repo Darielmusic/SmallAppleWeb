@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="stylesheet" href="/css/modal.css">
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css" />
 
   <title>SmallApple</title>
@@ -114,8 +114,8 @@
                                   <label for="slTipoUsuario">Estatus</label>
                                   <select autocomplete="off" class="requerid" tabindex="8" id="txtEstatus">
                                       <option value=""></option>
-                                      <option value="">Activo</option>
-                                      <option value="">Inactivo</option>
+                                      <option value="1">Activo</option>
+                                      <option value="2">Inactivo</option>
                                   </select> 
                                 </div>
                             
@@ -148,20 +148,19 @@
                               <div class="form-inputs">
                               </div>
                               <div class="form-inputs">
-                                <label for="txtLastname">Precio</label>
-                                <input autocomplete="off" type="number" tabindex="2" id="txtPrecio" >
+                                
                               </div>
-                              <div class="form-inputs">
+                              <div class="form-inputs inputs2">
                                 <label for="slStatus">Categoria</label>
                                  <select autocomplete="off" class="requerid" tabindex="9" id="txtCategoria">
-                                     <option value=""></option>
-                                     <option value="">Vegetales</option>
-                                     <option value="">Carnes</option>
-                                     <option value="">Embutidos</option>
-                                     <option value="">Granos</option>
+                                     <option value="1"></option>
+                                     <option value="2">Vegetales</option>
+                                     <option value="3">Carnes</option>
+                                     <option value="4">Embutidos</option>
+                                     <option value="5">Granos</option>
                                  </select> 
                                </div>
-                               <div class="form-inputs">
+                               <div class="form-inputs inputs1">
                                  <label for="txtLastname">Precio</label>
                                  <input autocomplete="off" type="number" tabindex="2" id="txtPrecio">
                                </div>
@@ -182,13 +181,13 @@
                                 </button>
                             </div>
                             <div class="button-grouper tooltip">
-                                <span class="tooltip-box">Buscar los usuarios</span>
+                                <span class="tooltip-box">Buscar productos</span>
                                 <button id="btnBuscar" class="btn-custom-info">
                                     <i class="fa-solid fa-magnifying-glass fa-2x"></i>
                                 </button>
                             </div>
                             <div class="button-grouper tooltip">
-                                <span class="tooltip-box">Guardar usuarios</span>
+                                <span class="tooltip-box">Guardar producto</span>
                                 <button id="btnGuardar" tabindex="12" title="Guardar" class="btn-custom-success">
                                     <i class="fa-regular fa-floppy-disk fa-2x"></i>
                                 </button>
@@ -205,6 +204,8 @@
                                                 <i class="fa-solid fa-xmark fa-2x"></i> 
                                             </button>
                                         </div> -->
+
+                                      
                         </div>
                     </section>
                     <!-- Seccion de los botones -->
@@ -236,6 +237,8 @@
 
     </div>
   </div>
+
+  <script src="/app/js/creacion-productos.js"></script>
 
 </body>
 </html>
