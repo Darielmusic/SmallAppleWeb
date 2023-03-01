@@ -454,8 +454,8 @@ body div.modal-container {
 div.modal-container .modal-content {
   border-radius: 5px;
   background-color: white;
-  width: 50%;
-  height: 80vh;
+  width: 80%;
+  height: 90vh;
   overflow: hidden;
 }
 
@@ -1825,7 +1825,7 @@ table tbody tr .process {
   justify-content: center;
   margin: 2%;
   font-size: 14px;
-  width: 86%;
+  width: 100%;
   margin-right: 2%;
   margin-top: 16;
 }
@@ -1846,10 +1846,6 @@ table tbody tr .process {
 }
 
 
-.table-content .table-cabezera {
-  margin-top: 82px;
-}
-
 .table-content .table-cabezera .tr-head {
   display: flex;
   background-color: var(--bottomBarColor);
@@ -1866,8 +1862,8 @@ table tbody tr .process {
 
 .table-content .table-cuerpo {
   position: relative;
-  /* overflow: scroll;
-  height: 60vh; */
+  overflow: scroll;
+  height: 80vh; 
 }
 
 .table-content .scroll {
@@ -3665,3 +3661,84 @@ b {
 
 
 /* FIN CAMBIOS ANDREWS*/
+
+
+/* Alerta inferior izquierda */
+
+.alert-banner {
+  width: 500px;
+  height: 120px;
+  position: fixed;
+  z-index: 150;
+  right: -500px;
+  bottom: 50px;
+  display: flex;
+  border-radius:8px;
+  transition: 0.4s;
+  overflow: hidden;
+}
+.show-alert{
+  right: 50px;
+}
+.alert-danger {
+  background-color: var(--danger-bkg-button);
+  border: solid 2px var(--border-inputs);
+}
+.alert-success {
+  background-color: var(--warning-bkg-button);
+  border: solid 2px var(--border-inputs);
+}
+.alert-warning {
+  background-color: var(--warning-card-bold);
+  border: solid 2px var(--border-inputs);
+}
+.alert-text-danger{
+  color: var(--bgContainer);
+}
+.alert-text-warning{
+  color: #000000;
+}
+.alert-text-success{
+  color: var(--bgContainer);
+}
+.content-icon{
+  width: 100px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.content-text{
+  width: 300px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.content-exit{
+  width: 100px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.content-icon i{
+  font-size: 50px;
+}
+.content-text p{
+  font-size: 16px;
+  font-weight: 700;
+}
+.content-exit{ 
+  font-weight: 600;
+  cursor: pointer;
+}
+.content-exit i{
+  font-size: 30px;
+}
+.content-exit:active{
+  overflow: unset;
+  background-color: #ebebeb;
+  transition: 0.2s;
+}
+/* Final de la alerta */

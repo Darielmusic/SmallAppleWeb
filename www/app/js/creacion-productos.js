@@ -1,5 +1,5 @@
 (() => {
-
+    let baseURL = 'http://localhost:3005/api/';
     let txtId = document.getElementById("txtId");
     let txtArticulo = document.getElementById("txtArticulo");
     let txtCodigo = document.getElementById("txtCodigo");
@@ -8,12 +8,7 @@
     let txtDescripcion = document.getElementById("txtDescripcion");
     let txtEstatus = document.getElementById("txtEstatus");
     let btnBuscar = document.getElementById("btnBuscar");
-
-
-
-
-    
-
+    let tbodyProduct = document.getElementById("tbodyProduct");
 
     //botones
     let btnGuardar = document.getElementById("btnGuardar");
@@ -21,8 +16,19 @@
     //
     let objeto = {}
 
-    //Modal
+    /////////////////////////////////////Limpiar todos los input/////////////////////
+    function clearAll(){
+        txtArticulo.value = "";
+        txtCodigo.value = "";
+        txtPrecio.value = "";
+        txtCategoria.value = "";
+        txtDescripcion.value = "";
+        txtEstatus.value = "";
+        btnBuscar.value = "";
+        tbodyProduct.value = "";
+    }
 
+    //Modal
     let modalContainer = document.getElementById("modalContainer");
 
     var showModal = () => {
@@ -36,17 +42,78 @@
     };
     closeModalAction.addEventListener("click", hideModal);
 
+    ////////////////////////////////////////Alerta inferior derecha////////////////////////
+    let alertBannerContainer = document.getElementById('alertBannerContainer');
+    let iconAlert = document.getElementById('icon-alert');
+    let alertExitButton = document.getElementById('alert-exit-button');
+    let alertText = document.getElementById('alert-text');
+    var showAlertModal = (mode, text) => {
+       let exitP = alertExitButton.querySelector('p')
+   
+       alertBannerContainer.className = '';
+       exitP.className = '';
+       iconAlert.className = '';
+       alertText.className = '';
+   
+       alertBannerContainer.classList.add('alert-banner', 'show-alert', `alert-${mode}`);
+       alertText.classList.add(`alert-text-${mode}`);
+       exitP.classList.add(`alert-text-${mode}`);
+       alertText.textContent = text;
+   
+       switch (mode) {
+           case 'danger':
+               iconAlert.className = '';
+               iconAlert.classList.add('fa-solid', 'fa-circle-xmark', 'alert-text-danger');
+               break;
+           case 'warning':
+               iconAlert.className = '';
+               iconAlert.classList.add('fa-solid', 'fa-circle-exclamation', 'alert-text-warning');
+               break;
+           case 'success':
+               iconAlert.className = '';
+               iconAlert.classList.add('fa-solid', 'fa-circle-check', 'alert-text-success');
+               break;
+       }
+   }
+   var hideAlertModal = () => {
+       alertBannerContainer.classList.remove('show-alert')
+   }
+   alertExitButton.addEventListener('click', hideAlertModal);
+
+
+    //Renderizacion de la tabla de los productos
+    let allDataProduct;
+    try {
+        fetch(`${baseURL}product`)
+        .then(res=>{
+            if(res.status >= 400) throw new Error('Error')
+            return res.json()
+        })
+        .then(res=>{
+            console.log(res);
+            allDataProduct = res;
+            console.log(allDataProduct);
+            for(let key in allDataProduct){
+                let row = document.createElement('div');
+                row.classList.add('tr-cuerpo');
+                row.setAttribute('data-key', key);
+                let td = `
+                            <div class="td-cuerpo">${allDataProduct[key].id}</div>
+                            <div class="td-cuerpo">${allDataProduct[key].barcode}</div>
+                            <div class="td-cuerpo">${allDataProduct[key].article}</div>
+                            <div class="td-cuerpo">${allDataProduct[key].description}</div>
+                            <div class="td-cuerpo">${allDataProduct[key].price}</div>
+                            `;
+                row.insertAdjacentHTML('beforeend', td);
+                tbodyProduct.insertAdjacentElement('beforeend', row);
+
+            }
+        })
+    } catch (error) {
+        
+    }
+
     btnGuardar.addEventListener("click", function () {
-
-        console.log(txtEstatus.value);
-        console.log(txtId.value);
-        console.log(txtCodigo.value);
-        console.log(txtArticulo.value);
-        console.log(txtCategoria.value);
-        console.log(txtEstatus.value);
-        console.log(txtDescripcion.value);
-
-        debugger
 
         if (txtId.value != "") {
             if (txtArticulo.value != "") {
@@ -63,8 +130,25 @@
                                         "categoryId": txtCategoria.value,
                                         "price": txtPrecio.value
                                     }
-
-                                    console.log(objeto);
+                                    try {
+                                        fetch(`${baseURL}produc`,{
+                                            method:'POST',
+                                            body: JSON.stringify(objeto),
+                                            headers: {
+                                                "Content-Type": "application/json",
+                                            },
+                                        })
+                                        .then(res=>{
+                                           console.log(res.status);
+                                            if(res.status < 400){
+                                                clearAll()
+                                                showAlertModal('success', 'Producto agregado correctamente')
+                                            }else{
+                                                showAlertModal('danger', 'Error al guardar el documento');
+                                            }
+                                        })
+                                    } catch (error) {
+                                    }
                                 }else{ alert("todos los campos deben de ser rellenados");
                                 txtId.focus();}
                             }else{ alert("todos los campos deben de ser rellenados");

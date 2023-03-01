@@ -133,7 +133,7 @@
                               </div>
                                 <div class="form-inputs">
                                     <label for="txtCedula">ID</label>
-                                    <input autocomplete="off" type="number" tabindex="3" class="requerid" id="txtId">
+                                    <input disabled autocomplete="off" value="0" type="number" tabindex="3" class="requerid" id="txtId">
                                 </div>
                                 <div class="form-inputs">
                                     <label for="txtUser">Articulo</label>
@@ -212,31 +212,61 @@
                 </div>
             </div>
         </section>
-   <!-- Modal de la solucion -->
+   <!-- Modal de los productos -->
    <div class="modal-container" id="modalContainer">
     <div class="modal-content">
 
       <div class="head-modal">
         <div class="info-modal-content">
-          <h1></h1>
+          <h1><i class="fa-solid fa-cookie-bite"></i> &nbsp Productos creados</h1>
         </div>
         <div class="close-modal">
           <i id="closeModalAction" class="fa-regular fa-circle-xmark fa-3x"></i>
         </div>
       </div>
-
       <hr class="custom-hr">
       <div class="body-modal" id="">
         <div class="body-content" id="contentForm">
           
-
+           <!-- thead tr td -->
+           <div class="content-table-pedidos">
+           <div class="table-content" id="tablePedidos">
+                <div class="table-cabezera">
+                    <div class="tr-head" id="tr-head">
+                        <div class="td-head">Codigo</div>
+                        <div class="td-head">Codigo de barra</div>
+                        <div class="td-head">Articulo</div>
+                        <div class="td-head">Descripción</div>
+                        <div class="td-head">Precio</div>
+                     </div>
+                </div>
+                    <!-- tbody tr td -->
+                    <div class="table-cuerpo pb" id="tbodyProduct">
+                    </div>
         </div>
       </div>
     </div>
+    </div>
   </div>
 
     </div>
   </div>
+
+
+    <!-- Alerta inferior Derecha -->
+    <div class="alert-banner" id="alertBannerContainer">
+      <div class="content-icon">
+        <i id="icon-alert" class="fa-solid fa-circle-check "></i>
+      </div>
+      <div class="content-text">
+        <p id="alert-text" class=""></p>
+      </div>
+      <div class="content-exit" id="alert-exit-button">
+        <p class="">
+          <i class="fa-solid fa-xmark"></i>
+        </p>
+      </div>
+    </div>
 
   <script src="/app/js/creacion-productos.js"></script>
 

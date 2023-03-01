@@ -78,5 +78,29 @@ module.exports = {
             console.log(error);
             return res.status(400).json(error)
         }
+    },
+
+    putProduct: async function(req, res){
+        const{
+            article,
+            barcode,
+            description,
+            statusId,
+            categoryId,
+            price,
+        } = req.body;
+        let pool = await connection;
+        await pool 
+        .request()
+        .input("id", req.params.id)
+        .input("article", article)
+        .input("barcode", barcode)
+        .input("description", description)
+        .input("statusId", statusId)
+        .input("categoryId", categoryId)
+        .input("price", price)
+        .execute("dbo.updateProduct")
+
+        return res.status(204).end();
     }
 }
