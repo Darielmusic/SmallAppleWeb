@@ -73,7 +73,7 @@ module.exports = {
                 console.log(respuesta);
                 throw new Error(respuesta[0].message)
             }
-           
+           F
         } catch (error) {
             console.log(error);
             return res.status(400).json(error)
