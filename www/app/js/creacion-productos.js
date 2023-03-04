@@ -177,6 +177,7 @@
                                 } else {
                                     showAlertModal('warning', 'Debe llenar es campos de estatus');
                                     txtEstatus.focus()
+
                                 }
                             } else {
                                 showAlertModal('warning', 'Debe llenar es campos de descripción');
@@ -184,7 +185,8 @@
                             }
                         } else {
                             showAlertModal('warning', 'Debe llenar es campos de categoría');
-                            txtCategoria.focus();
+                            txtCategoria.focus(); 
+
                         }
                     } else {
                         showAlertModal('warning', 'Debe llenar es campos de precio');
@@ -197,6 +199,7 @@
             } else {
                 showAlertModal('warning', 'Debe llenar es campos de articulo');
                 txtArticulo.focus();
+                
             }
         }
     })
