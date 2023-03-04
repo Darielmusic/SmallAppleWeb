@@ -132,98 +132,97 @@
                                         "categoryId": txtCategoria.value,
                                         "price": txtPrecio.value
                                     }
-                                    if (statusPeticion == 'POST') {
-                                        try {
-                                            fetch(`${baseURL}product`, {
-                                                method: 'POST',
-                                                body: JSON.stringify(objeto),
-                                                headers: {
-                                                    "Content-Type": "application/json",
-                                                },
-                                            })
-                                                .then(res => {
-                                                    console.log(res.status);
-                                                    if (res.status < 400) {
-                                                        clearAll()
-                                                        showAlertModal('success', 'Producto agregado correctamente')
-                                                    } else {
-                                                        showAlertModal('danger', 'Error al guardar el documento');
-                                                    }
-                                                })
-                                        } catch (error) {
-                                        }
-                                    }
-                                    else if (statusPeticion == 'PUT') {
-                                        try {
-                                            fetch(`${baseURL}product/${productId}`, {
-                                                method: 'PUT',
-                                                body: JSON.stringify(objeto),
-                                                headers: {
-                                                    "Content-Type": "application/json",
-                                                },
-                                            })
-                                                .then(res => {
-                                                    console.log(res.status);
-                                                    if (res.status < 400) {
-                                                        clearAll()
-                                                        showAlertModal('success', 'Producto modificado correctamente')
-                                                    } else {
-                                                        showAlertModal('danger', 'Error al modificar el documento');
-                                                    }
-                                                })
-                                        } catch (error) {
-                                        }
-                                    }
-                                } else {
-                                    showAlertModal('warning', 'Debe llenar es campos de estatus');
-                                    txtEstatus.focus()
 
+                                    try {
+                                        fetch(`${baseURL}produc`, {
+                                            method: 'POST',
+                                            body: JSON.stringify(objeto),
+                                            headers: {
+                                                "Content-Type": "application/json",
+                                            },
+                                        })
+                                            .then(res => {
+                                                console.log(res.status);
+                                                if (res.status < 400) {
+                                                    clearAll()
+                                                    showAlertModal('success', 'Producto agregado correctamente')
+                                                } else {
+                                                    showAlertModal('danger', 'Error al guardar el documento');
+                                                }
+                                            })
+                                    } catch (error) {
+                                    }
+
+                                    try {
+                                        fetch(`${baseURL}product/${productId}`, {
+                                            method: 'PUT',
+                                            body: JSON.stringify(objeto),
+                                            headers: {
+                                                "Content-Type": "application/json",
+                                            },
+                                        })
+                                            .then(res => {
+                                                console.log(res.status);
+                                                if (res.status < 400) {
+                                                    clearAll()
+                                                    showAlertModal('success', 'Producto modificado correctamente')
+                                                } else {
+                                                    showAlertModal('danger', 'Error al modificar el documento');
+                                                }
+                                            })
+                                    } catch (error) {
+                                    }
                                 }
                             } else {
-                                showAlertModal('warning', 'Debe llenar es campos de descripción');
-                                txtDescripcion.focus();
+                                showAlertModal('warning', 'Debe llenar es campos de estatus');
+                                txtEstatus.focus()
+
                             }
                         } else {
-                            showAlertModal('warning', 'Debe llenar es campos de categoría');
-                            txtCategoria.focus(); 
-
+                            showAlertModal('warning', 'Debe llenar es campos de descripción');
+                            txtDescripcion.focus();
                         }
                     } else {
-                        showAlertModal('warning', 'Debe llenar es campos de precio');
-                        txtPrecio.focus();
+                        showAlertModal('warning', 'Debe llenar es campos de categoría');
+                        txtCategoria.focus();
+
                     }
                 } else {
-                    showAlertModal('warning', 'Debe llenar es campos de codigo de barra');
-                    txtCodigo.focus();
+                    showAlertModal('warning', 'Debe llenar es campos de precio');
+                    txtPrecio.focus();
                 }
             } else {
-                showAlertModal('warning', 'Debe llenar es campos de articulo');
-                txtArticulo.focus();
-                
+                showAlertModal('warning', 'Debe llenar es campos de codigo de barra');
+                txtCodigo.focus();
             }
+        } else {
+            showAlertModal('warning', 'Debe llenar es campos de articulo');
+            txtArticulo.focus();
         }
-    })
-    btnBuscar.addEventListener("click", function () {
-        showModal();
+  
     })
 
-    tbodyProduct.addEventListener('click', function (e) {
-        if (e.target.matches('.tr-cuerpo') || e.target.matches('.td-cuerpo')) {
-            let key1 = e.target.parentElement.getAttribute('data-key');
-            let key2 = e.target.getAttribute('data-key');
-            let key = key1 || key2
-            statusPeticion = 'PUT';
-            productId = allDataProduct[key].id;
-            txtId.value = allDataProduct[key].id
-            txtArticulo.value = allDataProduct[key].article
-            txtCodigo.value = allDataProduct[key].barcode
-            txtPrecio.value = allDataProduct[key].price
-            txtCategoria.options.selectedIndex = allDataProduct[key].categoryId
-            txtDescripcion.value = allDataProduct[key].description
-            txtEstatus.options.selectedIndex = allDataProduct[key].statusId
+btnBuscar.addEventListener("click", function () {
+    showModal();
+})
 
-            hideModal();
-        }
-    })
+tbodyProduct.addEventListener('click', function (e) {
+    if (e.target.matches('.tr-cuerpo') || e.target.matches('.td-cuerpo')) {
+        let key1 = e.target.parentElement.getAttribute('data-key');
+        let key2 = e.target.getAttribute('data-key');
+        let key = key1 || key2
+        statusPeticion = 'PUT';
+        productId = allDataProduct[key].id;
+        txtId.value = allDataProduct[key].id
+        txtArticulo.value = allDataProduct[key].article
+        txtCodigo.value = allDataProduct[key].barcode
+        txtPrecio.value = allDataProduct[key].price
+        txtCategoria.options.selectedIndex = allDataProduct[key].categoryId
+        txtDescripcion.value = allDataProduct[key].description
+        txtEstatus.options.selectedIndex = allDataProduct[key].statusId
 
-})()
+        hideModal();
+    }
+})
+
+}) ()
