@@ -150,17 +150,17 @@
                                     } catch (error) {
                                     }
                                 }else{ alert("todos los campos deben de ser rellenados");
-                                txtId.focus();}
+                                txtEstatus.focus();}
                             }else{ alert("todos los campos deben de ser rellenados");
-                            txtId.focus();}
+                            txtDescripcion.focus();}
                         }else{ alert("todos los campos deben de ser rellenados");
-                        txtId.focus();}
+                        txtCategoria.focus();}
                     }else{ alert("todos los campos deben de ser rellenados");
-                    txtId.focus();}
+                    txtPrecio.focus();}
                 }else{ alert("todos los campos deben de ser rellenados");
-                txtId.focus();}
+                txtCodigo.focus();}
             }else{ alert("todos los campos deben de ser rellenados");
-            txtId.focus();}
+            txtArticulo.focus();}
         } else {
             alert("todos los campos deben de ser rellenados");
             txtId.focus();
