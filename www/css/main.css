@@ -3742,3 +3742,8 @@ b {
   transition: 0.2s;
 }
 /* Final de la alerta */
+
+/* CLASES GLOBALES */
+.cursor-pointer{
+  cursor: pointer;
+}
