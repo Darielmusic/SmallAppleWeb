@@ -11,7 +11,6 @@
     let tbodyProduct = document.getElementById("tbodyProduct");
     let statusPeticion = 'POST';
     let productId;
-
     //botones
     let btnGuardar = document.getElementById("btnGuardar");
 
@@ -92,9 +91,7 @@
                 return res.json()
             })
             .then(res => {
-                console.log(res);
                 allDataProduct = res;
-                console.log(allDataProduct);
                 for (let key in allDataProduct) {
                     let row = document.createElement('div');
                     row.classList.add('tr-cuerpo');
@@ -128,69 +125,104 @@
                                         "article": txtArticulo.value,
                                         "barcode": txtCodigo.value,
                                         "description": txtDescripcion.value,
-                                        "statusId": txtEstatus.value,
-                                        "categoryId": txtCategoria.value,
-                                        "price": txtPrecio.value
+                                        "statusId": Number(txtEstatus.value),
+                                        "categoryId": Number(txtCategoria.value),
+                                        "price": Number(txtPrecio.value)
                                     }
-                                    console.log(objeto);
-                                    try {
-                                        fetch(`${baseURL}produc`,{
-                                            method:'POST',
-                                            body: JSON.stringify(objeto),
-                                            headers: {
-                                                "Content-Type": "application/json",
-                                            },
-                                        })
-                                        .then(res=>{
-                                           console.log(res.status);
-                                            if(res.status < 400){
-                                                clearAll()
-                                                showAlertModal('success', 'Producto agregado correctamente')
-                                            }else{
-                                                showAlertModal('danger', 'Error al guardar el documento');
-                                            }
-                                        })
-                                    } catch (error) {
+
+                                    if(statusPeticion == 'POST'){
+                                        try {
+                                            fetch(`${baseURL}produc`, {
+                                                method: 'POST',
+                                                body: JSON.stringify(objeto),
+                                                headers: {
+                                                    "Content-Type": "application/json",
+                                                },
+                                            })
+                                                .then(res => {
+                                                    console.log(res.status);
+                                                    if (res.status < 400) {
+                                                        clearAll()
+                                                        showAlertModal('success', 'Producto agregado correctamente');
+                                                    } else {
+                                                        showAlertModal('danger', 'Error al guardar el documento');
+                                                    }
+                                                })
+                                        } catch (error) {
+                                        }
+                                    }else{
+                                        try {
+                                            fetch(`${baseURL}product/${productId}`, {
+                                                method: 'PUT',
+                                                body: JSON.stringify(objeto),
+                                                headers: {
+                                                    "Content-Type": "application/json",
+                                                },
+                                            })
+                                                .then(res => {
+                                                    console.log(res.status);
+                                                    if (res.status < 400) {
+                                                        clearAll()
+                                                        showAlertModal('success', 'Producto modificado correctamente')
+                                                    } else {
+                                                        showAlertModal('danger', 'Error al modificar el documento');
+                                                    }
+                                                })
+                                        } catch (error) {
+                                        }
                                     }
-                                }else{ alert("todos los campos deben de ser rellenados");
-                                txtEstatus.focus();}
-                            }else{ alert("todos los campos deben de ser rellenados");
-                            txtDescripcion.focus();}
-                        }else{ alert("todos los campos deben de ser rellenados");
-                        txtCategoria.focus();}
-                    }else{ alert("todos los campos deben de ser rellenados");
-                    txtPrecio.focus();}
-                }else{ alert("todos los campos deben de ser rellenados");
-                txtCodigo.focus();}
-            }else{ alert("todos los campos deben de ser rellenados");
-            txtArticulo.focus();}
+                                }
+                            } else {
+                                showAlertModal('warning', 'Debe llenar es campos de estatus');
+                                txtEstatus.focus();
+
+                            }
+                        } else {
+                            showAlertModal('warning', 'Debe llenar es campos de descripción');
+                            txtDescripcion.focus();
+                        }
+                    } else {
+                        showAlertModal('warning', 'Debe llenar es campos de categoría');
+                        txtCategoria.focus();
+
+                    }
+                } else {
+                    showAlertModal('warning', 'Debe llenar es campos de precio');
+                    txtPrecio.focus();
+                }
+            } else {
+                showAlertModal('warning', 'Debe llenar es campos de codigo de barra');
+                txtCodigo.focus();
+            }
         } else {
-            alert("todos los campos deben de ser rellenados");
-            txtId.focus();
-
+            showAlertModal('warning', 'Debe llenar es campos de articulo');
+            txtArticulo.focus();
         }
-    })
-    btnBuscar.addEventListener("click", function () {
-        showModal();
+  
     })
 
-    tbodyProduct.addEventListener('click', function (e) {
-        if (e.target.matches('.tr-cuerpo') || e.target.matches('.td-cuerpo')) {
-            let key1 = e.target.parentElement.getAttribute('data-key');
-            let key2 = e.target.getAttribute('data-key');
-            let key = key1 || key2
-            statusPeticion = 'PUT';
-            productId = allDataProduct[key].id;
-            txtId.value = allDataProduct[key].id
-            txtArticulo.value = allDataProduct[key].article
-            txtCodigo.value = allDataProduct[key].barcode
-            txtPrecio.value = allDataProduct[key].price
-            txtCategoria.options.selectedIndex = allDataProduct[key].categoryId
-            txtDescripcion.value = allDataProduct[key].description
-            txtEstatus.options.selectedIndex = allDataProduct[key].statusId
+btnBuscar.addEventListener("click", function () {
+    showModal();
+})
 
-            hideModal();
-        }
-    })
+tbodyProduct.addEventListener('click', function (e) {
+    console.log(e);
+    if (e.target.matches('.tr-cuerpo') || e.target.matches('.td-cuerpo')) {
+        let key1 = e.target.parentElement.getAttribute('data-key');
+        let key2 = e.target.getAttribute('data-key');
+        let key = key1 || key2
+        statusPeticion = 'PUT';
+        productId = allDataProduct[key].id;
+        txtId.value = allDataProduct[key].id
+        txtArticulo.value = allDataProduct[key].article
+        txtCodigo.value = allDataProduct[key].barcode
+        txtPrecio.value = allDataProduct[key].price
+        txtCategoria.options.selectedIndex = allDataProduct[key].categoryId
+        txtDescripcion.value = allDataProduct[key].description
+        txtEstatus.options.selectedIndex = allDataProduct[key].statusId
 
-})()
+        hideModal();
+    }
+})
+
+}) ()
