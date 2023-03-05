@@ -13,7 +13,7 @@
     let txtconfircontraseña = document.getElementById("txtconfircontraseña");
 
     //botones
-    let btnguardar = document.getElementById("btnguardar");
+    let btnGuardar = document.getElementById("btnGuardar");
 
     //
     let objeto = {}

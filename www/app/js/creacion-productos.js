@@ -132,6 +132,7 @@
                                         "categoryId": txtCategoria.value,
                                         "price": txtPrecio.value
                                     }
+                                    console.log(objeto);
                                     try {
                                         fetch(`${baseURL}produc`,{
                                             method:'POST',
