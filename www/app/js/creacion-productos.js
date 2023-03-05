@@ -91,9 +91,7 @@
                 return res.json()
             })
             .then(res => {
-                console.log(res);
                 allDataProduct = res;
-                console.log(allDataProduct);
                 for (let key in allDataProduct) {
                     let row = document.createElement('div');
                     row.classList.add('tr-cuerpo');
@@ -127,9 +125,9 @@
                                         "article": txtArticulo.value,
                                         "barcode": txtCodigo.value,
                                         "description": txtDescripcion.value,
-                                        "statusId": txtEstatus.value,
-                                        "categoryId": txtCategoria.value,
-                                        "price": txtPrecio.value
+                                        "statusId": Number(txtEstatus.value),
+                                        "categoryId": Number(txtCategoria.value),
+                                        "price": Number(txtPrecio.value)
                                     }
 
                                     if(statusPeticion == 'POST'){
@@ -145,7 +143,7 @@
                                                     console.log(res.status);
                                                     if (res.status < 400) {
                                                         clearAll()
-                                                        showAlertModal('success', 'Producto agregado correctamente')
+                                                        showAlertModal('success', 'Producto agregado correctamente');
                                                     } else {
                                                         showAlertModal('danger', 'Error al guardar el documento');
                                                     }
@@ -176,7 +174,7 @@
                                 }
                             } else {
                                 showAlertModal('warning', 'Debe llenar es campos de estatus');
-                                txtEstatus.focus()
+                                txtEstatus.focus();
 
                             }
                         } else {
@@ -208,6 +206,7 @@ btnBuscar.addEventListener("click", function () {
 })
 
 tbodyProduct.addEventListener('click', function (e) {
+    console.log(e);
     if (e.target.matches('.tr-cuerpo') || e.target.matches('.td-cuerpo')) {
         let key1 = e.target.parentElement.getAttribute('data-key');
         let key2 = e.target.getAttribute('data-key');
