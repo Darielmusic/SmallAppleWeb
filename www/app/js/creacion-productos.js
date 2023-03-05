@@ -11,7 +11,6 @@
     let tbodyProduct = document.getElementById("tbodyProduct");
     let statusPeticion = 'POST';
     let productId;
-
     //botones
     let btnGuardar = document.getElementById("btnGuardar");
 
@@ -133,44 +132,46 @@
                                         "price": txtPrecio.value
                                     }
 
-                                    try {
-                                        fetch(`${baseURL}produc`, {
-                                            method: 'POST',
-                                            body: JSON.stringify(objeto),
-                                            headers: {
-                                                "Content-Type": "application/json",
-                                            },
-                                        })
-                                            .then(res => {
-                                                console.log(res.status);
-                                                if (res.status < 400) {
-                                                    clearAll()
-                                                    showAlertModal('success', 'Producto agregado correctamente')
-                                                } else {
-                                                    showAlertModal('danger', 'Error al guardar el documento');
-                                                }
+                                    if(statusPeticion == 'POST'){
+                                        try {
+                                            fetch(`${baseURL}produc`, {
+                                                method: 'POST',
+                                                body: JSON.stringify(objeto),
+                                                headers: {
+                                                    "Content-Type": "application/json",
+                                                },
                                             })
-                                    } catch (error) {
-                                    }
-
-                                    try {
-                                        fetch(`${baseURL}product/${productId}`, {
-                                            method: 'PUT',
-                                            body: JSON.stringify(objeto),
-                                            headers: {
-                                                "Content-Type": "application/json",
-                                            },
-                                        })
-                                            .then(res => {
-                                                console.log(res.status);
-                                                if (res.status < 400) {
-                                                    clearAll()
-                                                    showAlertModal('success', 'Producto modificado correctamente')
-                                                } else {
-                                                    showAlertModal('danger', 'Error al modificar el documento');
-                                                }
+                                                .then(res => {
+                                                    console.log(res.status);
+                                                    if (res.status < 400) {
+                                                        clearAll()
+                                                        showAlertModal('success', 'Producto agregado correctamente')
+                                                    } else {
+                                                        showAlertModal('danger', 'Error al guardar el documento');
+                                                    }
+                                                })
+                                        } catch (error) {
+                                        }
+                                    }else{
+                                        try {
+                                            fetch(`${baseURL}product/${productId}`, {
+                                                method: 'PUT',
+                                                body: JSON.stringify(objeto),
+                                                headers: {
+                                                    "Content-Type": "application/json",
+                                                },
                                             })
-                                    } catch (error) {
+                                                .then(res => {
+                                                    console.log(res.status);
+                                                    if (res.status < 400) {
+                                                        clearAll()
+                                                        showAlertModal('success', 'Producto modificado correctamente')
+                                                    } else {
+                                                        showAlertModal('danger', 'Error al modificar el documento');
+                                                    }
+                                                })
+                                        } catch (error) {
+                                        }
                                     }
                                 }
                             } else {
