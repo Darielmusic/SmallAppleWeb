@@ -132,7 +132,7 @@
 
                                     if(statusPeticion == 'POST'){
                                         try {
-                                            fetch(`${baseURL}produc`, {
+                                            fetch(`${baseURL}product`, {
                                                 method: 'POST',
                                                 body: JSON.stringify(objeto),
                                                 headers: {
