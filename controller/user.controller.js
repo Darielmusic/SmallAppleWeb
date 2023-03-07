@@ -4,13 +4,13 @@ const { connection } = require('../db/dbconnections')
 
 module.exports = {
 
-    getProduct: async function (req, res) {
+    getUser: async function (req, res) {
         let pool = await connection;
-
+        console.log('hola wey')
         let resultado = await pool
             .request()
             .query(
-                `select id, Nombre,Apellido,ltrim(rtrim(Cedula))Cedula, Direccion, email, usuario, codigo_user, tipo_user, contraseña, estatus from user`
+                `select id, Nombre,Apellido,ltrim(rtrim(Cedula))Cedula, Direccion, email, usuario, codigo_user, tipo_user, contraseña, estatus from userx`
             );
         // let dto = modelValidation(models.user, resultado.recordset);
         res.json(resultado.recordset);
@@ -20,7 +20,7 @@ module.exports = {
         const { id } = req.params;
         let pool = await connection;
         let result = await pool.request()
-            .query(`select id, Nombre,Apellido, Cedula, Direccion, email, usuario, codigo_user, tipo_user, contraseña, estatus from user where id = ${id}`)
+            .query(`select id, Nombre,Apellido, Cedula, Direccion, email, usuario, codigo_user, tipo_user, contraseña, estatus from userx where id = ${id}`)
         let respuesta = result.recordset.map((db) => {
             let dto = { ...models.product };
             dto.id = db.id
@@ -108,6 +108,7 @@ module.exports = {
         let pool = await connection;
         await pool 
         .request()
+        .input("id", req.params.id)
         .input("Nombre", Nombre)
         .input("Apellido", Apellido)
         .input("Cedula", Cedula)
