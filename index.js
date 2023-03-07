@@ -5,16 +5,16 @@ const numCpu = require('os').cpus().length;
 require('dotenv').config();
 if(cluster.isMaster){
     require("./lib/server")
-    for(let i = 0; i < numCpu; i++){
-        cluster.fork();
+   for(let i = 0; i < numCpu; i++){
+       cluster.fork();
     }
 }else{
-    const app = exp();
+   const app = exp();
     app.use(exp.json());
     app.use(cors());
     const routes = require('./routes/routes');
     app.use(routes);
     app.listen(3005, ()=>{
-        console.log('Listening in port 3005');
-    })
+       console.log('Listening in port 3005');
+   })
 }

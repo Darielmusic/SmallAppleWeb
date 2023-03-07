@@ -6,7 +6,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="stylesheet" href="/css/modal.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css" />
 
   <title>SmallApple</title>
@@ -106,7 +105,7 @@
                                 </div>
                                 <div class="form-inputs mt-10">
                                     <label for="txtNumero">Codigo de usuario</label>
-                                    <input autocomplete="off" disabled type="text" value="Nuevo" class="" id="txtNumero">
+                                    <input autocomplete="off" disabled type="text" value="Nuevo" class="" id="txtcodigo">
                                 </div>
                                 <!-- <div class="form-inputs ">
                                     <label for="slSucursales">Sucursales</label>
@@ -116,7 +115,7 @@
                                 </div> -->
                                 <div class="form-inputs">
                                     <label for="slTipoUsuario">Tipo de Usuario</label>
-                                    <select autocomplete="off" class="requerid" tabindex="8" id="slTipoUsuario">
+                                    <select autocomplete="off" class="requerid" tabindex="8" id="txttipousuario">
                                         <option value=""></option>
                                         <option value="">Admin</option>
                                         <option value="">Corriente</option>
@@ -124,7 +123,7 @@
                                 </div>
                                 <div class="form-inputs">
                                     <label for="slStatus">Estatus</label>
-                                    <select autocomplete="off" class="requerid" tabindex="9" id="slStatus">
+                                    <select autocomplete="off" class="requerid" tabindex="9" id="txtestatus">
                                         <option value=""></option>
                                     </select>
                                 </div>
@@ -132,7 +131,7 @@
                             <div class="center">
                                 <div class="form-inputs">
                                     <label for="txtName">Nombre</label>
-                                    <input autocomplete="off" type="text" tabindex="1" class="requerid" id="txtName">
+                                    <input autocomplete="off" type="text" tabindex="1" class="requerid" id="txtnombre">
                                 </div>
                                 <div class="form-inputs">
                                     <label for="txtCedula">Cedula</label>
@@ -140,12 +139,12 @@
                                 </div>
                                 <div class="form-inputs">
                                     <label for="txtUser">Usuario</label>
-                                    <input autocomplete="off" type="text" tabindex="5" class="requerid" id="txtUser">
+                                    <input autocomplete="off" type="text" tabindex="5" class="requerid" id="txtusuario">
                                 </div>
                                 <div class="form-inputs eye-content">
                                     <label for="txtPassword">Contraseña</label>
                                     <i class="fa-regular fa-eye-slash"></i>
-                                    <input autocomplete="off" type="password" tabindex="10" id="txtPassword">
+                                    <input autocomplete="off" type="password" tabindex="10" id="txtcontraseña">
                                 </div>
                             </div>
         
@@ -153,20 +152,20 @@
         
                                 <div class="form-inputs">
                                     <label for="txtLastname">Apellido</label>
-                                    <input autocomplete="off" type="text" tabindex="2" id="txtLastname">
+                                    <input autocomplete="off" type="text" tabindex="2" id="txtapellido">
                                 </div>
                                 <div class="form-inputs">
                                     <label for="txtaddress">Direccion</label>
-                                    <input autocomplete="off" type="text" tabindex="4" id="txtaddress">
+                                    <input autocomplete="off" type="text" tabindex="4" id="txtdireccion">
                                 </div>
                                 <div class="form-inputs">
                                     <label for="txtEmail">E-mail</label>
-                                    <input autocomplete="off" type="text" tabindex="6" id="txtEmail">
+                                    <input autocomplete="off" type="text" tabindex="6" id="txtemail">
                                 </div>
                                 <div class="form-inputs eye-content">
                                     <label for="txtConfirmPassword">Confirmar contraseña</label>
                                     <i class="fa-regular fa-eye-slash"></i>
-                                    <input autocomplete="off" type="password" tabindex="11" id="txtConfirmPassword">
+                                    <input autocomplete="off" type="password" tabindex="11" id="txtconfircontraseña">
                                 </div>
                             </div>
         
@@ -177,19 +176,19 @@
                       <div class="button-container">
                           <div class="button-grouper tooltip">
                               <span class="tooltip-box ">Limpiar</span>
-                              <button id="btnClearAll" title="Nuevo" class="hbtn-custom-primary" fdprocessedid="jxwzg">
+                              <button id="btnlimpiar" title="Nuevo" class="hbtn-custom-primary" fdprocessedid="jxwzg">
                                   <i class="fa-solid fa-file fa-2x"></i>
                               </button>
                           </div>
                           <div class="button-grouper tooltip">
                               <span class="tooltip-box">Buscar los usuarios</span>
-                              <button id="btnSearchUser" class="btn-custom-info" fdprocessedid="hf63qc">
+                              <button id="btnbuscar" class="btn-custom-info" fdprocessedid="hf63qc">
                                   <i class="fa-solid fa-magnifying-glass fa-2x"></i>
                               </button>
                           </div>
                           <div class="button-grouper tooltip">
                               <span class="tooltip-box">Guardar usuarios</span>
-                              <button id="btnSaveUser" tabindex="12" title="Guardar" class="btn-custom-success" fdprocessedid="swxsyj">
+                              <button id="btnGuardar" tabindex="12" title="Guardar" class="btn-custom-success" fdprocessedid="swxsyj">
                                   <i class="fa-regular fa-floppy-disk fa-2x"></i>
                               </button>
                           </div>                       
@@ -207,10 +206,24 @@
             </div>
         </section>
 
-<div></div>
+<!-- Alerta inferior Derecha -->
+<div class="alert-banner" id="alertBannerContainer">
+  <div class="content-icon">
+    <i id="icon-alert" class="fa-solid fa-circle-check "></i>
+  </div>
+  <div class="content-text">
+    <p id="alert-text" class=""></p>
+  </div>
+  <div class="content-exit" id="alert-exit-button">
+    <p class="">
+      <i class="fa-solid fa-xmark"></i>
+    </p>
+  </div>
+</div>
 
     </div>
   </div>
 
+  <script src="/app/js/creacion-usuario.js"></script>
 </body>
 </html>

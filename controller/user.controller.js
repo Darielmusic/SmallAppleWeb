@@ -57,7 +57,6 @@ module.exports = {
             } = req.body
 
             let pool = await connection;
-
             let result = await pool
                 .request()
                 .input("Nombre", Nombre)
@@ -71,21 +70,18 @@ module.exports = {
                 .input("contraseña", contraseña)
                 .input("estatus", estatus)
                 .execute("dbo.usp_crearUser")
-
             let respuesta = result.recordset.map((db) => {
                 let dto = { ...global.modelReponse };
                 dto.status = db.status
                 dto.message = db.message
                 return dto;
             })
-          
             if (respuesta[0].status == 3) {
                 return res.json(req.body);
             } else {
                 console.log(respuesta);
                 throw new Error(respuesta[0].message)
             }
-           
         } catch (error) {
             console.log(error);
             return res.status(400).json(error)
