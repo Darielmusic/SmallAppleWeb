@@ -32,19 +32,19 @@
         txtemail.value = "";
     }
 
-    // //Modal
-    // let modalContainer = document.getElementById("modalContainer");
+     //Modal
+     let modalContainer = document.getElementById("modalContainer");
 
-    // var showModal = () => {
-    //     modalContainer.style.opacity = 1;
-    //     modalContainer.style.pointerEvents = "unset";
-    // };
+     var showModal = () => {
+         modalContainer.style.opacity = 1;
+         modalContainer.style.pointerEvents = "unset";
+     };
 
-    // var hideModal = () => {
-    //     modalContainer.style.opacity = 0;
-    //     modalContainer.style.pointerEvents = "none";
-    // };
-    // closeModalAction.addEventListener("click", hideModal);
+     var hideModal = () => {
+         modalContainer.style.opacity = 0;
+         modalContainer.style.pointerEvents = "none";
+     };
+     closeModalAction.addEventListener("click", hideModal);
 
     ////////////////////////////////////////Alerta inferior derecha////////////////////////
     let alertBannerContainer = document.getElementById('alertBannerContainer');
@@ -86,37 +86,41 @@
     alertExitButton.addEventListener('click', hideAlertModal);
 
 
-    //Renderizacion de la tabla de los productos
-    // let allDataProduct;
-    // try {
-    //     fetch(`${baseURL}product`)
-    //         .then(res => {
-    //             if (res.status >= 400) throw new Error('Error')
-    //             return res.json()
-    //         })
-    //         .then(res => {
-    //             console.log(res);
-    //             allDataProduct = res;
-    //             console.log(allDataProduct);
-    //             for (let key in allDataProduct) {
-    //                 let row = document.createElement('div');
-    //                 row.classList.add('tr-cuerpo');
-    //                 row.setAttribute('data-key', key);
-    //                 let td = `
-    //                         <div class="td-cuerpo">${allDataProduct[key].id}</div>
-    //                         <div class="td-cuerpo">${allDataProduct[key].barcode}</div>
-    //                         <div class="td-cuerpo">${allDataProduct[key].article}</div>
-    //                         <div class="td-cuerpo">${allDataProduct[key].description}</div>
-    //                         <div class="td-cuerpo">${allDataProduct[key].price}</div>
-    //                         `;
-    //                 row.insertAdjacentHTML('beforeend', td);
-    //                 tbodyProduct.insertAdjacentElement('beforeend', row);
+    //Renderizacion de la tabla de los Usuarios
+     //let allDataUser;
+//     try {
+//         fetch(`${baseURL}user`)
+//             .then(res => {
+//                 if (res.status >= 400) throw new Error('Error')
+//    return res.json()
+//            })
+//            .then(res => {
+//                console.log(res);
+//                allDataUser = res;
+//                console.log(allDataUser);
+//                for (let key in allDataUser) {
+//                    let row = document.createElement('div');
+//                    row.classList.add('tr-cuerpo');
+//                    row.setAttribute('data-key', key);
+//                    let td = `
+//                            <div class="td-cuerpo">${allDataUser[key].Nombre}</div>
+//                            <div class="td-cuerpo">${allDataUser[key].Apellido}</div>
+//                            <div class="td-cuerpo">${allDataUser[key].Direccion}</div>
+//                            <div class="td-cuerpo">${allDataUser[key].Email}</div>
+  //                          <div class="td-cuerpo">${allDataUser[key].Usuario}</div>
+//                            <div class="td-cuerpo">${allDataUser[key].codigo_user}</div>
+//                            <div class="td-cuerpo">${allDataUser[key].contraseña}</div>
+//                            <div class="td-cuerpo">${allDataUser[key].estatus}</div>
+//                            <div class="td-cuerpo">${allDataUser[key].tipo_user}</div>
+//                            `;
+//                    row.insertAdjacentHTML('beforeend', td);
+//                    tbodyUser.insertAdjacentElement('beforeend', row);
 
-    //             }
-    //         })
-    // } catch (error) {
+//                }
+//         })
+ //} catch (error) {
 
-    // }
+   //  }
 
     btnGuardar.addEventListener("click", function () {
 
@@ -136,8 +140,8 @@
                                                     "Nombre": txtnombre.value,
                                                     "Apellido": txtapellido.value,
                                                     "Cedula": txtCedula.value,
-                                                    "Direccion": txtEstatus.value,
-                                                    "email": txtCategoria.value,
+                                                    "Direccion": txtdireccion.value,
+                                                    "email": txtemail.value,
                                                     "usuario": txtusuario.value,
                                                     "codigo_user": txtcodigo.value,
                                                     "tipo_user": txttipousuario.value,
@@ -146,7 +150,7 @@
 
                                                 }
                                                 try {
-                                                    fetch(`${baseURL}produc`, {
+                                                    fetch(`${baseURL}user`, {
                                                         method: 'POST',
                                                         body: JSON.stringify(objeto),
                                                         headers: {
@@ -157,7 +161,7 @@
                                                             console.log(res.status);
                                                             if (res.status < 400) {
                                                                 clearAll()
-                                                                showAlertModal('success', 'Producto agregado correctamente')
+                                                                showAlertModal('success', 'Usuario agregado correctamente')
                                                             } else {
                                                                 showAlertModal('danger', 'Error al guardar el documento');
                                                             }
@@ -214,5 +218,7 @@
 
         showModal();
     })
+
+    produc
 
 })()

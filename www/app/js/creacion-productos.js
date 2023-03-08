@@ -129,10 +129,10 @@
                                         "categoryId": Number(txtCategoria.value),
                                         "price": Number(txtPrecio.value)
                                     }
-
+                                    console.log(objeto);
                                     if(statusPeticion == 'POST'){
                                         try {
-                                            fetch(`${baseURL}produc`, {
+                                            fetch(`${baseURL}product`, {
                                                 method: 'POST',
                                                 body: JSON.stringify(objeto),
                                                 headers: {
