@@ -125,7 +125,7 @@
     btnGuardar.addEventListener("click", function () {
 
         if (txtNumero.value != "") {
-            if (txttipousuario.value != "") {
+            if (txttipousuario.options.selectedIndex != "") {
                 if (txtusuario.value != "") {
                     if (txtnombre != "") {
                         if (txtestatus.options.selectedIndex != "") {
@@ -171,54 +171,52 @@
 
 
                                             } else {
-                                                alert("todos los campos deben de ser rellenados");
+                                                showAlertModal('warning', 'Debe llenar el campos de');
                                                 txtemail.focus();
                                             }
                                         } else {
-                                            alert("todos los campos deben de ser rellenados");
+                                            showAlertModal('warning', 'Debe llenar el campos de');
                                             txtdireccion.focus();
                                         }
                                     } else {
-                                        alert("todos los campos deben de ser rellenados");
+                                        showAlertModal('warning', 'Debe llenar el campos de');
                                         txtapellido.focus();
                                     }
                                 } else {
-                                    alert("todos los campos deben de ser rellenados");
+                                    showAlertModal('warning', 'Debe llenar el campos de');
                                     txtcontraseña.focus();
                                 }
                             } else {
-                                alert("todos los campos deben de ser rellenados");
+                                showAlertModal('warning', 'Debe llenar el campos de');
                                 txtCedula.focus();
                             }
                         } else {
-                            alert("todos los campos deben de ser rellenados");
+                            showAlertModal('warning', 'Debe llenar el campos de');
                             txtestatus.focus();
                         }
                     } else {
-                        alert("todos los campos deben de ser rellenados");
+                        showAlertModal('warning', 'Debe llenar el campos de');
                         txtnombre.focus();
                     }
                 } else {
-                    alert("todos los campos deben de ser rellenados");
+                    showAlertModal('warning', 'Debe llenar el campos de');
                     txtusuario.focus();
                 }
             } else {
-                showAlertModal('warning', 'Debe llenar el campo de tipo de usuario')
-                ;
+                showAlertModal('warning', 'Debe llenar el campos de');
                 txttipousuario.focus();
             }
         } else {
-            showAlertModal('warning', 'Debe llenar el campo de tipo de usuario')
+            showAlertModal('warning', 'Debe llenar el campos de');
             txtNumero.focus();
 
         }
     })
 
-    btnBuscar.addEventListener("click", function () {
+    btnbuscar.addEventListener("click", function () {
 
         showModal();
     })
 
-    produc
 
 })()
