@@ -17,8 +17,10 @@
     //
     let objeto = {}
 
+
     /////////////////////////////////////Limpiar todos los input/////////////////////
-    function clearAll() {
+
+    function clearAll(){
         txtArticulo.value = "";
         txtCodigo.value = "";
         txtPrecio.value = "";
@@ -28,6 +30,20 @@
         btnBuscar.value = "";
         tbodyProduct.value = "";
     }
+    
+    let btnlimpiar = document.getElementById("btnlimpiar");
+
+    btnlimpiar.addEventListener("click", function () {
+        txtArticulo.value = "";
+        txtCodigo.value = "";
+        txtPrecio.value = "";
+        txtCategoria.value = "";
+        txtDescripcion.value = "";
+        txtEstatus.value = "";
+        btnBuscar.value = "";
+        tbodyProduct.value = "";
+
+    })
 
     //Modal
     let modalContainer = document.getElementById("modalContainer");
@@ -129,6 +145,8 @@
                                         "categoryId": Number(txtCategoria.value),
                                         "price": Number(txtPrecio.value)
                                     }
+
+                                    
                                     console.log(objeto);
                                     if(statusPeticion == 'POST'){
                                         try {
@@ -144,6 +162,8 @@
                                                     if (res.status < 400) {
                                                         clearAll()
                                                         showAlertModal('success', 'Producto agregado correctamente');
+                                                        
+                                                        
                                                     } else {
                                                         showAlertModal('danger', 'Error al guardar el documento');
                                                     }
@@ -164,6 +184,7 @@
                                                     if (res.status < 400) {
                                                         clearAll()
                                                         showAlertModal('success', 'Producto modificado correctamente')
+                                                        setTimeout(recarga, 1500);
                                                     } else {
                                                         showAlertModal('danger', 'Error al modificar el documento');
                                                     }
