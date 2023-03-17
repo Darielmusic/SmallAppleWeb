@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/main.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css"
+    />
+
+    <title>SmallApple</title>
+  </head>
+
+  <body>
+    <!-- fin -->
+    <div class="container">
+      <div class="container-custom">
+        <div class="sidebarContainer">
+          <nav class="sidebar" id="menuLateral">
+            <div class="sideBarHeader">
+              <div class="text-logo">
+                <div class="logoSideBar">
+                  <img src="/src/logoSmallApple.png" alt="" />
+                </div>
+              </div>
+              <div class="menu-bar">
+                <div class="menu nav">
+                  <ul class="list-menu">
+                    <li>
+                      <a href="home.html"
+                        ><i class="fa-solid fa-house"></i> Inicio</a
+                      >
+                    </li>
+                    <li>
+                      <a href="creacion-usuarios.html"
+                        ><i class="fa-solid fa-users"></i>Usuarios</a
+                      >
+                    </li>
+                    <li>
+                      <a href="creacion-productos.html"
+                        ><i class="fa-solid fa-box"></i>Productos</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#"
+                        ><i class="fa-solid fa-cart-flatbed"></i>Pedidos</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#"
+                        ><i class="fa-solid fa-computer"></i>Monitoreo de
+                        pedido</a
+                      >
+                    </li>
+                    <li>
+                      <a href="producto-existencia.html"
+                        ><i class="fa-brands fa-watchman-monitoring"></i
+                        >Productos en existencia</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#"
+                        ><i class="fa-solid fa-clock-rotate-left"></i
+                        >Historial</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+
+        <section class="section-form">
+          <header>
+            <div class="header-menu-container" id="menuContenedor">
+              <div class="content-opcion">
+                <i class="fa-regular fa-sun"></i>
+                <div class="cerrar-section">Configuracion</div>
+              </div>
+              <div class="content-opcion" id="logoPerfil">
+                <i class="fa-solid fa-right-to-bracket"></i>
+                <div class="cerrar-section">Cerrar sesion</div>
+              </div>
+            </div>
+
+            <div class="header-container-top">
+              <div class="user-header" id="headerUsuario">
+                <div class="user-info-content">
+                  <div id="nameUserHeader"></div>
+                  <div id="secondNameUserHeader"></div>
+                </div>
+                <img id="imgUserHeader" src="/src/user.jpg" alt="" />
+                <i id="icoImg" class="fa-solid fa-caret-down"></i>
+              </div>
+            </div>
+          </header>
+          <hr id="hr_reference" class="custom-hr" />
+
+          <section class="section-form">
+            <div class="form-container">
+              <hr class="custom-hr" />
+              <div class="header-container">
+                <div class="form-header">
+                  <h1>
+                    <i class="fa-solid fa-box"></i> &nbsp Productos en
+                    existencia
+                  </h1>
+                  <span>Aquí se muestran los productos en existencia</span>
+                </div>
+              </div>
+            </div>
+          </section>
+          <div class="content-table-pedidos">
+            <div class="table-content" id="tablePedidos">
+              <div class="table-cabezera">
+                <div class="tr-head" id="tr-head">
+                  <div class="td-head">Codigo</div>
+                  <div class="td-head">Codigo de barra</div>
+                  <div class="td-head">Articulo</div>
+                  <div class="td-head">Precio</div>
+                  <div class="td-head">Cantidad</div>
+                </div>
+              </div>
+              <!-- tbody tr td -->
+              <div class="table-cuerpo pb" id="tbodyExistencia">
+                <!-- <div class="tr-cuerpo cursor-pointer" data-key="0">
+                  <div class="td-cuerpo">1</div>
+                  <div class="td-cuerpo">5252636</div>
+                  <div class="td-cuerpo">Arroz</div>
+                  <div class="td-cuerpo">200</div>
+                  <div class="td-cuerpo"><input class="input-table" type="text" /></div>
+                </div> -->
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Modal de los productos -->
+        <div class="modal-container" id="modalContainer">
+          <div class="modal-content">
+            <div class="head-modal">
+              <div class="info-modal-content">
+                <h1>
+                  <i class="fa-solid fa-cookie-bite"></i> &nbsp Productos
+                  creados
+                </h1>
+              </div>
+              <div class="close-modal">
+                <i
+                  id="closeModalAction"
+                  class="fa-regular fa-circle-xmark fa-3x"
+                ></i>
+              </div>
+            </div>
+            <hr class="custom-hr" />
+            <div class="body-modal" id="">
+              <div class="body-content" id="contentForm">
+                <!-- thead tr td -->
+                <div class="content-table-pedidos">
+                  <div class="table-content" id="tablePedidos">
+                    <div class="table-cabezera">
+                      <div class="tr-head" id="tr-head">
+                        <div class="td-head">Codigo</div>
+                        <div class="td-head">Codigo de barra</div>
+                        <div class="td-head">Articulo</div>
+                        <div class="td-head">Descripción</div>
+                        <div class="td-head">Precio</div>
+                      </div>
+                    </div>
+                    <!-- tbody tr td -->
+                    <div class="table-cuerpo pb" id="tbodyProduct"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Alerta inferior Derecha -->
+    <div class="alert-banner" id="alertBannerContainer">
+      <div class="content-icon">
+        <i id="icon-alert" class="fa-solid fa-circle-check"></i>
+      </div>
+      <div class="content-text">
+        <p id="alert-text" class=""></p>
+      </div>
+      <div class="content-exit" id="alert-exit-button">
+        <p class="">
+          <i class="fa-solid fa-xmark"></i>
+        </p>
+      </div>
+    </div>
+
+    <script src="/app/js/product-existencia.js"></script>
+  </body>
+</html>

@@ -10,7 +10,7 @@ module.exports = {
         let resultado = await pool
             .request()
             .query(
-                `select id, ltrim(rtrim(article))article,ltrim(rtrim(barcode))barcode,ltrim(rtrim(description))description, statusId, categoryId, price from produts`
+                `select id, ltrim(rtrim(article))article,ltrim(rtrim(barcode))barcode,ltrim(rtrim(description))description, statusId, categoryId, price, cantidad from produts`
             );
         // let dto = modelValidation(models.product, resultado.recordset);
         res.json(resultado.recordset);
@@ -20,7 +20,7 @@ module.exports = {
         const { id } = req.params;
         let pool = await connection;
         let result = await pool.request()
-            .query(`select id,article, barcode, description, statusId, categoryId, price from produts where id = ${id}`)
+            .query(`select id,article, barcode, description, statusId, categoryId, price, cantidad from produts where id = ${id}`)
         let respuesta = result.recordset.map((db) => {
             let dto = { ...models.product };
             dto.id = db.id
@@ -46,6 +46,7 @@ module.exports = {
                 statusId,
                 categoryId,
                 price,
+                cantidad = 0,
             } = req.body
 
             let pool = await connection;
@@ -58,6 +59,7 @@ module.exports = {
                 .input("statusId", statusId)
                 .input("categoryId", categoryId)
                 .input("price", price)
+                .input("cantidad", cantidad)
                 .execute("dbo.usp_crearProductos")
 
             let respuesta = result.recordset.map((db) => {
@@ -88,6 +90,7 @@ module.exports = {
             statusId,
             categoryId,
             price,
+            cantidad,
         } = req.body;
         let pool = await connection;
         await pool 
@@ -99,7 +102,22 @@ module.exports = {
         .input("statusId", statusId)
         .input("categoryId", categoryId)
         .input("price", price)
+        .input("cantidad", cantidad)
         .execute("dbo.updateProduct")
+
+        return res.status(204).end();
+    },
+
+    putProductCantidad: async function(req, res){
+        const{
+            cantidad,
+        } = req.body;
+        let pool = await connection;
+        await pool 
+        .request()
+        .input("id", req.params.id)
+        .input("cantidad", cantidad)
+        .execute("dbo.updateProductCantidad")
 
         return res.status(204).end();
     }

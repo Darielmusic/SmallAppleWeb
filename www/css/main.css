@@ -3747,3 +3747,16 @@ b {
 .cursor-pointer{
   cursor: pointer;
 }
+
+.input-table{
+  width: 70%;
+  height: 34px;
+  border-radius: 5px;
+  outline: none;
+  border: 1px solid #9d9191;
+  text-align: center;
+}
+
+.color-success{
+  border: 4px solid green;
+}

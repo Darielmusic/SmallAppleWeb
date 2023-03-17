@@ -8,5 +8,6 @@ router.get(`${baseURL}`,controller.getProduct)
 router.get(`${baseURL}:id`, controller.getById);
 router.post(`${baseURL}`, controller.postProduct);
 router.put(`${baseURL}:id`, controller.putProduct);
+router.put(`${baseURL}cantidad/:id`, controller.putProductCantidad);
 
 module.exports = router
