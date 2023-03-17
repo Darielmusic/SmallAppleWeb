@@ -1,6 +1,6 @@
 (() => {
     let baseURL = 'http://localhost:3005/api/';
-    let txtNumero = document.getElementById("txtcodigo");
+    let txtcodigo = document.getElementById("txtcodigo");
     let txttipousuario = document.getElementById("txttipousuario");
     let txtestatus = document.getElementById("txtestatus");
     let txtnombre = document.getElementById("txtnombre");
@@ -11,15 +11,36 @@
     let txtdireccion = document.getElementById("txtdireccion");
     let txtemail = document.getElementById("txtemail");
     let txtconfircontraseña = document.getElementById("txtconfircontraseña");
+    let tbodyUser = document.getElementById("tbodyUser");
+    let userId;
+    let statusPeticion = 'POST';
 
     //botones
     let btnGuardar = document.getElementById("btnGuardar");
+    let btnlimpiar = document.getElementById("btnlimpiar");
 
     //
     let objeto = {}
 
+
+
     /////////////////////////////////////Limpiar todos los input/////////////////////
-    function clearAll() {
+function clearAll(){
+    txtcodigo.value = "";
+    txttipousuario.value = "";
+    txtestatus.value = "";
+    txtnombre.value = "";
+    txtCedula.value = "";
+    txtusuario.value = "";
+    txtcontraseña.value = "";
+    txtapellido.value = "";
+    txtdireccion.value = "";
+    txtemail.value = "";
+    txtconfircontraseña.value = "";
+    tbodyUser.value = "";
+}
+
+    btnlimpiar.addEventListener("click", function () {
         txtcodigo.value = "";
         txttipousuario.value = "";
         txtestatus.value = "";
@@ -30,21 +51,26 @@
         txtapellido.value = "";
         txtdireccion.value = "";
         txtemail.value = "";
-    }
+        txtconfircontraseña.value = "";
+        tbodyUser.value = "";
+    })
 
-    // //Modal
-    // let modalContainer = document.getElementById("modalContainer");
 
-    // var showModal = () => {
-    //     modalContainer.style.opacity = 1;
-    //     modalContainer.style.pointerEvents = "unset";
-    // };
 
-    // var hideModal = () => {
-    //     modalContainer.style.opacity = 0;
-    //     modalContainer.style.pointerEvents = "none";
-    // };
-    // closeModalAction.addEventListener("click", hideModal);
+
+    //Modal
+    let modalContainer = document.getElementById("modalContainer");
+
+    var showModal = () => {
+        modalContainer.style.opacity = 1;
+        modalContainer.style.pointerEvents = "unset";
+    };
+
+    var hideModal = () => {
+        modalContainer.style.opacity = 0;
+        modalContainer.style.pointerEvents = "none";
+    };
+    closeModalAction.addEventListener("click", hideModal);
 
     ////////////////////////////////////////Alerta inferior derecha////////////////////////
     let alertBannerContainer = document.getElementById('alertBannerContainer');
@@ -54,7 +80,7 @@
 
     var showAlertModal = (mode, text) => {
         let exitP = alertExitButton.querySelector('p')
-
+        console.log('aja')
         alertBannerContainer.className = '';
         exitP.className = '';
         iconAlert.className = '';
@@ -86,42 +112,53 @@
     alertExitButton.addEventListener('click', hideAlertModal);
 
 
-    //Renderizacion de la tabla de los productos
-    // let allDataProduct;
-    // try {
-    //     fetch(`${baseURL}product`)
-    //         .then(res => {
-    //             if (res.status >= 400) throw new Error('Error')
-    //             return res.json()
-    //         })
-    //         .then(res => {
-    //             console.log(res);
-    //             allDataProduct = res;
-    //             console.log(allDataProduct);
-    //             for (let key in allDataProduct) {
-    //                 let row = document.createElement('div');
-    //                 row.classList.add('tr-cuerpo');
-    //                 row.setAttribute('data-key', key);
-    //                 let td = `
-    //                         <div class="td-cuerpo">${allDataProduct[key].id}</div>
-    //                         <div class="td-cuerpo">${allDataProduct[key].barcode}</div>
-    //                         <div class="td-cuerpo">${allDataProduct[key].article}</div>
-    //                         <div class="td-cuerpo">${allDataProduct[key].description}</div>
-    //                         <div class="td-cuerpo">${allDataProduct[key].price}</div>
-    //                         `;
-    //                 row.insertAdjacentHTML('beforeend', td);
-    //                 tbodyProduct.insertAdjacentElement('beforeend', row);
+    //Renderizacion de la tabla de los Usuarios
+    let allDataUser;
+    try {
+        fetch(`${baseURL}user`)
+            .then(res => {
+                if (res.status >= 400) throw new Error('Error')
+                return res.json()
+            })
+            .then(res => {
+                console.log(res);
+                allDataUser = res;
+                console.log(allDataUser);
+                for (let key in allDataUser) {
+                    let row = document.createElement('div');
+                    row.classList.add('tr-cuerpo');
+                    row.setAttribute('data-key', key);
+                    let td = `
+                            <div class="td-cuerpo">${allDataUser[key].Nombre}</div>
+                            <div class="td-cuerpo">${allDataUser[key].Apellido}</div>
+                            <div class="td-cuerpo">${allDataUser[key].Cedula}</div>
+                            <div class="td-cuerpo">${allDataUser[key].email}</div>
+                            <div class="td-cuerpo">${allDataUser[key].usuario}</div>
+                            <div class="td-cuerpo">${allDataUser[key].codigo_user}</div>
+                            <div class="td-cuerpo">${allDataUser[key].tipo_user}</div>
+                            <div class="td-cuerpo">${allDataUser[key].contraseña}</div>
+                            <div class="td-cuerpo">${allDataUser[key].estatus}</div>
+                             <div class="td-cuerpo">${allDataUser[key].Direccion}</div>
+                            
+                            
+                            
+                           
+                           
+                           
+                           `;
+                    row.insertAdjacentHTML('beforeend', td);
+                    tbodyUser.insertAdjacentElement('beforeend', row);
 
-    //             }
-    //         })
-    // } catch (error) {
+                }
+            })
+    } catch (error) {
 
-    // }
+    }
 
     btnGuardar.addEventListener("click", function () {
 
-        if (txtNumero.value != "") {
-            if (txttipousuario.value != "") {
+        if (txtcodigo.value != "") {
+            if (txttipousuario.options.selectedIndex != "") {
                 if (txtusuario.value != "") {
                     if (txtnombre != "") {
                         if (txtestatus.options.selectedIndex != "") {
@@ -133,20 +170,70 @@
 
 
                                                 objeto = {
-                                                    "Nombre": txtnombre.value,
-                                                    "Apellido": txtapellido.value,
-                                                    "Cedula": txtCedula.value,
-                                                    "Direccion": txtEstatus.value,
-                                                    "email": txtCategoria.value,
-                                                    "usuario": txtusuario.value,
-                                                    "codigo_user": txtcodigo.value,
+                                                    "codigo_user": 25634,
                                                     "tipo_user": txttipousuario.value,
+                                                    "usuario": txtusuario.value,
+                                                    "Nombre": txtnombre.value,
+                                                    "estatus": txtestatus.value,
+                                                    "Cedula": txtCedula.value,
                                                     "contraseña": txtcontraseña.value,
-                                                    "estatus": txtestatus.value
+                                                    "Apellido": txtapellido.value,
+                                                    "Direccion": txtdireccion.value,
+                                                    "email": txtemail.value
 
                                                 }
-                                                try {
-                                                    fetch(`${baseURL}produc`, {
+                                                console.log(objeto);
+
+                                                // cosaa
+
+                                                if (statusPeticion == 'POST') {
+                                                    try {
+                                                        fetch(`${baseURL}user`, {
+                                                            method: 'POST',
+                                                            body: JSON.stringify(objeto),
+                                                            headers: {
+                                                                "Content-Type": "application/json",
+                                                            },
+                                                        })
+                                                            .then(res => {
+                                                                console.log(res.status);
+                                                                if (res.status < 400) {
+                                                                    clearAll()
+                                                                    showAlertModal('success', 'Producto agregado correctamente');
+                                                                   
+                                                                } else {
+                                                                    showAlertModal('danger', 'Error al guardar el documento');
+                                                                }
+                                                            })
+                                                    } catch (error) {
+                                                    }
+                                                } else {
+                                                    try {
+                                                        fetch(`${baseURL}user/${userId}`, {
+                                                            method: 'PUT',
+                                                            body: JSON.stringify(objeto),
+                                                            headers: {
+                                                                "Content-Type": "application/json",
+                                                            },
+                                                        })
+                                                            .then(res => {
+                                                                console.log(res.status);
+                                                                if (res.status < 400) {
+                                                                    console.log("si");
+                                                                    clearAll()
+                                                                    showAlertModal('success', 'Usuario modificado correctamente')
+                                                                } else {
+                                                                    showAlertModal('danger', 'Error al modificar el documento');
+                                                                }
+                                                            })
+                                                    } catch (error) {
+                                                    }
+                                                }
+
+                                                //fin cosa
+
+                                                /* try {
+                                                    fetch(`${baseURL}user`, {
                                                         method: 'POST',
                                                         body: JSON.stringify(objeto),
                                                         headers: {
@@ -157,62 +244,88 @@
                                                             console.log(res.status);
                                                             if (res.status < 400) {
                                                                 clearAll()
-                                                                showAlertModal('success', 'Producto agregado correctamente')
+                                                                showAlertModal('success', 'Usuario agregado correctamente')
                                                             } else {
                                                                 showAlertModal('danger', 'Error al guardar el documento');
                                                             }
                                                         })
                                                 } catch (error) {
-                                                }
+                                                } */
 
 
                                             } else {
-                                                alert("todos los campos deben de ser rellenados");
+                                                showAlertModal('warning', 'Debe llenar el campos de email');
                                                 txtemail.focus();
                                             }
                                         } else {
-                                            alert("todos los campos deben de ser rellenados");
+                                            showAlertModal('warning', 'Debe llenar el campos de direccion');
                                             txtdireccion.focus();
                                         }
                                     } else {
-                                        alert("todos los campos deben de ser rellenados");
+                                        showAlertModal('warning', 'Debe llenar el campos de apellido');
                                         txtapellido.focus();
                                     }
                                 } else {
-                                    alert("todos los campos deben de ser rellenados");
+                                    showAlertModal('warning', 'Debe llenar el campos de contrasena');
                                     txtcontraseña.focus();
                                 }
                             } else {
-                                alert("todos los campos deben de ser rellenados");
+                                showAlertModal('warning', 'Debe llenar el campos de cedula');
                                 txtCedula.focus();
                             }
                         } else {
-                            alert("todos los campos deben de ser rellenados");
+                            showAlertModal('warning', 'Debe llenar el campos de estado');
                             txtestatus.focus();
                         }
                     } else {
-                        alert("todos los campos deben de ser rellenados");
+                        showAlertModal('warning', 'Debe llenar el campos de nombre');
                         txtnombre.focus();
                     }
                 } else {
-                    alert("todos los campos deben de ser rellenados");
+                    showAlertModal('warning', 'Debe llenar el campos de usuario');
                     txtusuario.focus();
                 }
             } else {
-                showAlertModal('warning', 'Debe llenar el campo de tipo de usuario')
-                ;
+                showAlertModal('warning', 'Debe llenar el campos de tipo usuario');
                 txttipousuario.focus();
             }
         } else {
-            showAlertModal('warning', 'Debe llenar el campo de tipo de usuario')
-            txtNumero.focus();
+            showAlertModal('warning', 'Debe llenar el campos de codigo');
+            txtcodigo.focus();
 
         }
     })
 
-    btnBuscar.addEventListener("click", function () {
+    btnbuscar.addEventListener("click", function () {
 
         showModal();
     })
+
+    tbodyUser.addEventListener('click', function (e) {
+        console.log(e);
+        if (e.target.matches('.tr-cuerpo') || e.target.matches('.td-cuerpo')) {
+            let key1 = e.target.parentElement.getAttribute('data-key');
+            let key2 = e.target.getAttribute('data-key');
+            let key = key1 || key2
+            statusPeticion = 'PUT';
+            productId = allDataUser[key].id;
+
+            txtcodigo.value = allDataUser[key].codigo_user
+            txttipousuario.options.selectedIndex = allDataUser[key].tipo_user
+            txtusuario.value = allDataUser[key].usuario
+            txtnombre.value = allDataUser[key].Nombre
+            txtestatus.options.selectedIndex = allDataUser[key].estatus
+            txtCedula.value = allDataUser[key].Cedula
+            txtcontraseña.value = allDataUser[key].contraseña
+            txtapellido.value = allDataUser[key].Apellido
+            txtdireccion.value = allDataUser[key].Direccion
+            txtemail.value = allDataUser[key].email
+
+
+
+            hideModal();
+        }
+    })
+
 
 })()
