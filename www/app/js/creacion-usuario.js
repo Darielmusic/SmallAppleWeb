@@ -1,5 +1,5 @@
 (() => {
-    let baseURL = 'http://localhost:3005/api/';
+    let baseURL = 'http://10.0.0.46:3005/api/';
     let txtcodigo = document.getElementById("txtcodigo");
     let txttipousuario = document.getElementById("txttipousuario");
     let txtestatus = document.getElementById("txtestatus");
