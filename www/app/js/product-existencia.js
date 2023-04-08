@@ -1,6 +1,6 @@
 (()=>{
     //Variables
-    let baseURL = 'http://localhost:3005/api/';
+    let baseURL = 'http://10.0.0.46:3005/api/';
     let tbodyExistencia = document.getElementById('tbodyExistencia');
     let allDataProduct;
 

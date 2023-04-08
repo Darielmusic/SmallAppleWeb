@@ -87,93 +87,81 @@
                 <hr class="custom-hr">
                 <div class="header-container">
                     <div class="form-header">
-                        <h1><i class="fa-solid fa-users"></i> &nbsp Mantenimiento de usuarios</h1>
-                        <span>Este apartado es para la administracion de los usuarios</span>
+                        <h1><i class="fa-solid fa-users"></i> &nbsp Creacion de pedidos</h1>
+                        <span>Este apartado es para la creacion de pedidos</span>
                     </div>
                 </div>
                 <div class="section-content">
                     <div class="section-container" id="formContainer">
                         <form autocomplete="off" class="inputs-container">
         
+                            <!--Seccion Main--->
                             <div class="left">
-                                <div class="photo-container">
-                                    <div class="img-user" id="imgContainer">
-                                        <img src="/src/user.jpg" id="imgUser">
-                                        <input accept="image/*" type="file" id="imgUserInput">
-                                        
-                                    </div>
-                                </div>
-                                <div class="form-inputs mt-10">
-                                    <label for="txtNumero">Codigo de usuario</label>
-                                    <input autocomplete="off" disabled type="text" value="Nuevo" class="" id="txtcodigo">
-                                </div>
-                                <!-- <div class="form-inputs ">
-                                    <label for="slSucursales">Sucursales</label>
-                                    <select autocomplete="off" class="requerid" tabindex="7" id="slSucursales">
-                                        <option value=""></option>
-                                    </select>
-                                </div> -->
+                                
                                 <div class="form-inputs">
-                                    <label for="slTipoUsuario">Tipo de Usuario</label>
-                                    <select autocomplete="off" class="requerid" tabindex="8" id="txttipousuario">
-                                        <option value=""></option>
-                                        <option value="">Admin</option>
-                                        <option value="">Corriente</option>
-                                    </select>
+                                    <label for="slTipoUsuario">Codigo</label>
+                                    <input autocomplete="off" type="text" tabindex="1" id="txtcodigo">
                                 </div>
+
                                 <div class="form-inputs">
-                                    <label for="slStatus">Estatus</label>
-                                    <select autocomplete="off" class="requerid" tabindex="9" id="txtestatus">
-                                        <option value=""></option>
-                                      
-                                        <option value="">Activo</option>
-                                        <option value="">Inactivo</option>
-                                    </select>
+                                    <label for="slStatus">Precio</label>
+                                    <input autocomplete="on" tabindex="4" type="text" id="txtprecio"disabled>
                                 </div>
                             </div>
+
                             <div class="center">
                                 <div class="form-inputs">
-                                    <label for="txtName">Nombre</label>
-                                    <input autocomplete="off" type="text" tabindex="1" class="requerid" id="txtnombre">
+                                    <label for="txtName">Codigo de barra</label>
+                                    <input autocomplete="off" type="text" tabindex="2" class="requerid" id="txtcodbarra">
                                 </div>
                                 <div class="form-inputs">
-                                    <label for="txtCedula">Cedula</label>
-                                    <input autocomplete="off" type="text" tabindex="3" class="requerid" id="txtCedula">
-                                </div>
-                                <div class="form-inputs">
-                                    <label for="txtUser">Usuario</label>
-                                    <input autocomplete="off" type="text" tabindex="5" class="requerid" id="txtusuario">
-                                </div>
-                                <div class="form-inputs eye-content">
-                                    <label for="txtPassword">Contraseña</label>
-                                    <i class="fa-regular fa-eye-slash"></i>
-                                    <input autocomplete="off" type="password" tabindex="10" id="txtcontraseña">
+                                    <label for="txtCedula">Descripcion</label>
+                                    <input autocomplete="on" type="text" tabindex="5" class="requerid" id="txtdescripcion" disabled>
                                 </div>
                             </div>
+
+                            
         
                             <div class="right">
         
                                 <div class="form-inputs">
-                                    <label for="txtLastname">Apellido</label>
-                                    <input autocomplete="off" type="text" tabindex="2" id="txtapellido">
+                                    <label for="txtLastname">Articulo</label>
+                                    <input autocomplete="on" type="text" tabindex="3" id="txtarticulo" disabled>
                                 </div>
                                 <div class="form-inputs">
-                                    <label for="txtaddress">Direccion</label>
-                                    <input autocomplete="off" type="text" tabindex="4" id="txtdireccion">
-                                </div>
-                                <div class="form-inputs">
-                                    <label for="txtEmail">E-mail</label>
-                                    <input autocomplete="off" type="text" tabindex="6" id="txtemail">
-                                </div>
-                                <div class="form-inputs eye-content">
-                                    <label for="txtConfirmPassword">Confirmar contraseña</label>
-                                    <i class="fa-regular fa-eye-slash"></i>
-                                    <input autocomplete="off" type="password" tabindex="11" id="txtconfircontraseña">
+                                    <label for="txtaddress">Cantidad</label>
+                                    <input autocomplete="on" type="text" tabindex="6" id="txtcantidad">
                                 </div>
                             </div>
         
                         </form>
-                    </div>
+
+                        <div class="content-table-pedidos">
+                            <div class="table-content" id="tablePedidos">
+                              <div class="table-cabezera">
+                                <div class="tr-head" id="tr-head">
+                                  <div class="td-head">Codigo</div>
+                                  <div class="td-head">Codigo de barra</div>
+                                  <div class="td-head">Articulo</div>
+                                  <div class="td-head">Precio</div>
+                                  <div class="th-head">Descripcion</div>
+                                  <div class="td-head">Cantidad</div>
+                                </div>
+                              </div>
+                              <!-- tbody tr td -->
+                              <div class="table-cuerpo pb" id="tbodydespacho">
+                                 <div class="tr-cuerpo cursor-pointer" data-key="0">
+                                  <div class="td-cuerpo">1</div>
+                                  <div class="td-cuerpo">5252636</div>
+                                  <div class="td-cuerpo">Arroz</div>
+                                  <div class="td-cuerpo">200</div>
+                                  <div class="td-cuerpo">Arroz campo de alta calidad</div>
+                                  <div class="td-cuerpo"><input class="input-table" type="text" /></div>
+                                </div> 
+                              </div>
+                            </div>
+                        </div>
+                    </div>   
 
                     <!-- Seccion de los botones -->
                     <section class="button-section">
@@ -273,6 +261,6 @@
 
   
 
-  <script src="/app/js/creacion-usuario.js"></script>
+  <script src="/app/js/creacion-pedidos.js"></script>
 </body>
 </html>
