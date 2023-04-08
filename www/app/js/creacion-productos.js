@@ -11,6 +11,7 @@
     let tbodyProduct = document.getElementById("tbodyProduct");
     let statusPeticion = 'POST';
     let productId;
+    let allDataProduct;
     //botones
     let btnGuardar = document.getElementById("btnGuardar");
 
@@ -97,37 +98,28 @@
     }
     alertExitButton.addEventListener('click', hideAlertModal);
 
+    try {
+        fetch(`${baseURL}category`)
+        .then(res=>{
+            if(res.status >= 400) throw new Error('Error de conexion')
+            else return res.json();
+        })
+        .then(res=>{
+            console.log(res);
+            for(let key in res){
+                let option = document.createElement('option')
+                option.value = res[key].categoryId
+                option.textContent = res[key].description
+                console.log(option);
+                txtCategoria.insertAdjacentElement('beforeend', option)
+            }
+        })
+    } catch (error) {
+        
+    }
 
     //Renderizacion de la tabla de los productos
-    let allDataProduct;
-    try {
-        fetch(`${baseURL}product`)
-            .then(res => {
-                if (res.status >= 400) throw new Error('Error')
-                return res.json()
-            })
-            .then(res => {
-                allDataProduct = res;
-                for (let key in allDataProduct) {
-                    let row = document.createElement('div');
-                    row.classList.add('tr-cuerpo');
-                    row.setAttribute('data-key', key);
-                    row.classList.add('cursor-pointer');
-                    let td = `
-                            <div class="td-cuerpo">${allDataProduct[key].id}</div>
-                            <div class="td-cuerpo">${allDataProduct[key].barcode}</div>
-                            <div class="td-cuerpo">${allDataProduct[key].article}</div>
-                            <div class="td-cuerpo">${allDataProduct[key].description}</div>
-                            <div class="td-cuerpo">${allDataProduct[key].price}</div>
-                            `;
-                    row.insertAdjacentHTML('beforeend', td);
-                    tbodyProduct.insertAdjacentElement('beforeend', row);
 
-                }
-            })
-    } catch (error) {
-
-    }
     btnGuardar.addEventListener("click", function () {
 
         if (txtId.value != "") {
@@ -135,7 +127,6 @@
                 if (txtCodigo.value != "") {
                     if (txtPrecio.value != "") {
                         if (txtCategoria.options.selectedIndex != "") {
-                            if (txtDescripcion.value != "") {
                                 if (txtEstatus.options.selectedIndex != "") {
                                     objeto = {
                                         "article": txtArticulo.value,
@@ -198,10 +189,6 @@
                                 txtEstatus.focus();
 
                             }
-                        } else {
-                            showAlertModal('warning', 'Debe llenar es campos de descripción');
-                            txtDescripcion.focus();
-                        }
                     } else {
                         showAlertModal('warning', 'Debe llenar es campos de categoría');
                         txtCategoria.focus();
@@ -223,6 +210,34 @@
     })
 
 btnBuscar.addEventListener("click", function () {
+
+    try {
+        fetch(`${baseURL}product`)
+            .then(res => {
+                if (res.status >= 400) throw new Error('Error')
+                return res.json()
+            })
+            .then(res => {
+                allDataProduct = res;
+                for (let key in allDataProduct) {
+                    let row = document.createElement('div');
+                    row.classList.add('tr-cuerpo');
+                    row.setAttribute('data-key', key);
+                    row.classList.add('cursor-pointer');
+                    let td = `
+                            <div class="td-cuerpo">${allDataProduct[key].id}</div>
+                            <div class="td-cuerpo">${allDataProduct[key].barcode}</div>
+                            <div class="td-cuerpo">${allDataProduct[key].article}</div>
+                            <div class="td-cuerpo">${allDataProduct[key].price}</div>
+                            `;
+                    row.insertAdjacentHTML('beforeend', td);
+                    tbodyProduct.insertAdjacentElement('beforeend', row);
+
+                }
+            })
+    } catch (error) {
+
+    }
     showModal();
 })
 
